@@ -983,7 +983,7 @@ function renderGrid(){
     const inCart=cart[p.id]?cart[p.id].qty:0;
     const inWish=wish.has(p.id);
     const discPct=p.old?Math.round((1-p.price/p.old)*100):0;
-    return `<div class="pcard" onclick="handleCardClick('${p.id}',event)">
+    return `<div class="pcard" onclick="openPD('${p.id}')">
       ${p.badge?`<span class="pbadge pbadge-${bmap[p.badge]}">${p.disc||btext[p.badge]}</span>`:''}
       <button class="pwish-btn ${inWish?'on':''}" onclick="quickWish('${p.id}',this,event)">${inWish?'❤️':'🤍'}</button>
       <div class="pimg-wrap">
@@ -1024,14 +1024,7 @@ function cardQtyChange(id,d){
   const el=document.getElementById(`cardQty_${id}`);
   if(el) el.textContent=cardQtyMap[id];
 }
-// Tocar la tarjeta (imagen/nombre/etc.) agrega 1 unidad al carrito directamente
-function handleCardClick(id,e){
-  const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
-  if(cart[id]) cart[id].qty+=1;
-  else cart[id]={product:p,qty:1};
-  updateCart(); renderGrid(); updateWishPanel();
-  toast(`🛒 ${p.name} agregado al carrito`);
-}
+// La tarjeta (imagen/nombre) abre la ficha del producto — el carrito solo se controla con los botones −/+ y "Agregar"
 // El botón "Agregar" de al lado suma la cantidad elegida y, si ya estaba en el carrito, lleva directo al carrito
 function addToCartFromCard(id){
   const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
@@ -1190,7 +1183,7 @@ function shareCart(){
   const items=Object.values(cart);
   if(!items.length){toast('⚠️ El carrito está vacío');return;}
   const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
-  const msg=`🛒 *MI CARRITO — MERCADUKO*\n━━━━━━━━━━━━━━━━\n`+
+  const msg=`🛒 *MI CARRITO — MERCADUK💚*\n━━━━━━━━━━━━━━━━\n`+
     items.map(({product:p,qty})=>`• ${p.name}\n  ×${qty} — ${fmt(p.price*qty)}`).join('\n')+
     `\n━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total)}*\n\n¡Mira lo que encontré! 😍`;
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
@@ -1286,7 +1279,7 @@ function sendOrder(){
   const items=Object.values(cart);
   const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
   const shipping=total>=2000?0:150;
-  const msg=`🛒 *NUEVO PEDIDO — MERCADUKO*\n━━━━━━━━━━━━━━━━\n`+
+  const msg=`🛒 *NUEVO PEDIDO — MERCADUK💚*\n━━━━━━━━━━━━━━━━\n`+
     `👤 *Nombre:* ${name}\n📞 *Tel:* ${phone}\n🏠 *Dir:* ${addr}\n`+
     (time?`🕐 *Horario:* ${time}\n`:'')+
     (note?`📝 *Nota:* ${note}\n`:'')+
