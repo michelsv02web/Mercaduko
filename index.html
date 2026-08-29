@@ -474,24 +474,20 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 <!-- CATEGORY BAR -->
 <div class="catbar" id="catbar">
   <button class="cattab active" onclick="setCat('all',this)"><span class="cattab-icon">🏪</span>Todo</button>
-  <button class="cattab" onclick="setCat('electronica',this)"><span class="cattab-icon">📱</span>Electrónica</button>
   <button class="cattab" onclick="setCat('alimentos',this)"><span class="cattab-icon">🍎</span>Alimentos</button>
-  <button class="cattab" onclick="setCat('hogar',this)"><span class="cattab-icon">🏠</span>Hogar</button>
-  <button class="cattab" onclick="setCat('ropa',this)"><span class="cattab-icon">👗</span>Ropa</button>
-  <button class="cattab" onclick="setCat('belleza',this)"><span class="cattab-icon">💄</span>Belleza</button>
-  <button class="cattab" onclick="setCat('deportes',this)"><span class="cattab-icon">⚽</span>Deportes</button>
-  <button class="cattab" onclick="setCat('juguetes',this)"><span class="cattab-icon">🧸</span>Juguetes</button>
-  <button class="cattab" onclick="setCat('salud',this)"><span class="cattab-icon">💊</span>Salud</button>
+  <button class="cattab" onclick="setCat('combukos',this)"><span class="cattab-icon">🎁</span>Combukos</button>
 </div>
 
-<!-- BARRA DE MONEDA -->
-<div class="currency-bar" id="currencyBar">
+<!-- BARRA DE MONEDA — Desactivada por ahora (solo se vende en USD).
+     Para reactivarla cuando tengas ambas monedas: borra el atributo style que dice display:none
+     en el div de aquí abajo, y en la sección de JavaScript cambia currency de USD a CUP. -->
+<div class="currency-bar" id="currencyBar" style="display:none">
   <span class="currency-bar-label">💱 Moneda:</span>
   <div class="currency-pill">
-    <button class="cur-btn active" id="btnCUP" onclick="setCurrency('CUP')">
+    <button class="cur-btn" id="btnCUP" onclick="setCurrency('CUP')">
       <span class="cur-flag">🇨🇺</span><span class="cur-text">CUP</span>
     </button>
-    <button class="cur-btn" id="btnUSD" onclick="setCurrency('USD')">
+    <button class="cur-btn active" id="btnUSD" onclick="setCurrency('USD')">
       <span class="cur-flag">🇺🇸</span><span class="cur-text">USD</span>
     </button>
   </div>
@@ -502,97 +498,6 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
   <div class="hero-slides" id="heroSlides">
     <div class="hslide hslide-1">
       <div class="hslide-content">
-        <div class="hslide-tag">⚡ Oferta del día</div>
-        <h1 class="hslide-title">HASTA <em>50% OFF</em><br>EN ELECTRÓNICA</h1>
-        <p class="hslide-sub">Smartphones, laptops, audífonos y más. Tecnología al mejor precio.</p>
-        <button class="hslide-cta" onclick="setCatDirect('electronica')">Ver Ofertas →</button>
-      </div>
-      <div class="hslide-icon-wrap">
-        <div class="hslide-icon-emoji">📱</div>
-        <div class="hslide-icon-name">Samsung Galaxy A55</div>
-        <div class="hslide-icon-price">$18,500 CUP</div>
-      </div>
-    </div>
-    <div class="hslide hslide-2">
-      <div class="hslide-content">
-        <div class="hslide-tag">🔥 Super Descuentos</div>
-        <h1 class="hslide-title">HOGAR &<br><em>COCINA</em> HOY</h1>
-        <p class="hslide-sub">Todo para tu casa: electrodomésticos, decoración y más. Envío gratis.</p>
-        <button class="hslide-cta" onclick="setCatDirect('hogar')">Explorar Hogar →</button>
-      </div>
-      <div class="hslide-icon-wrap">
-        <div class="hslide-icon-emoji">🤖</div>
-        <div class="hslide-icon-name">Aspiradora Robot Xiaomi</div>
-        <div class="hslide-icon-price">$8,500 CUP</div>
-      </div>
-    </div>
-    <div class="hslide hslide-3">
-      <div class="hslide-content">
-        <div class="hslide-tag">🌿 Vida Saludable</div>
-        <h1 class="hslide-title">SALUD &<br><em>BIENESTAR</em></h1>
-        <p class="hslide-sub">Tensiómetros, básculas, vitaminas y colágeno. Cuida tu salud todos los días.</p>
-        <button class="hslide-cta" onclick="setCatDirect('salud')">Ver Productos →</button>
-      </div>
-      <div class="hslide-icon-wrap">
-        <div class="hslide-icon-emoji">🩺</div>
-        <div class="hslide-icon-name">Tensiómetro Digital</div>
-        <div class="hslide-icon-price">$1,400 CUP</div>
-      </div>
-    </div>
-    <div class="hslide hslide-4">
-      <div class="hslide-content">
-        <div class="hslide-tag">👗 Nueva Temporada</div>
-        <h1 class="hslide-title">MODA &<br><em>ESTILO</em> ÚNICO</h1>
-        <p class="hslide-sub">Ropa, sneakers y accesorios para cada ocasión. Encuentra tu look.</p>
-        <button class="hslide-cta" onclick="setCatDirect('ropa')">Ver Colección →</button>
-      </div>
-      <div class="hslide-icon-wrap">
-        <div class="hslide-icon-emoji">👟</div>
-        <div class="hslide-icon-name">Sneakers Air Max 270</div>
-        <div class="hslide-icon-price">$3,500 CUP</div>
-      </div>
-    </div>
-    <div class="hslide hslide-5">
-      <div class="hslide-content">
-        <div class="hslide-tag">💄 Brilla Siempre</div>
-        <h1 class="hslide-title">BELLEZA &<br><em>CUIDADO</em> PERSONAL</h1>
-        <p class="hslide-sub">Sérums, perfumes y maquillaje de calidad para realzar tu belleza.</p>
-        <button class="hslide-cta" onclick="setCatDirect('belleza')">Ver Belleza →</button>
-      </div>
-      <div class="hslide-icon-wrap">
-        <div class="hslide-icon-emoji">✨</div>
-        <div class="hslide-icon-name">Sérum Vitamina C</div>
-        <div class="hslide-icon-price">$920 CUP</div>
-      </div>
-    </div>
-    <div class="hslide hslide-6">
-      <div class="hslide-content">
-        <div class="hslide-tag">🏋️ Ponte en Forma</div>
-        <h1 class="hslide-title">DEPORTES &<br><em>FITNESS</em> TOTAL</h1>
-        <p class="hslide-sub">Bicicletas, pesas, mats y ropa deportiva para tu entrenamiento.</p>
-        <button class="hslide-cta" onclick="setCatDirect('deportes')">Ver Deportes →</button>
-      </div>
-      <div class="hslide-icon-wrap">
-        <div class="hslide-icon-emoji">🚴</div>
-        <div class="hslide-icon-name">Bicicleta Montaña 29"</div>
-        <div class="hslide-icon-price">$12,000 CUP</div>
-      </div>
-    </div>
-    <div class="hslide hslide-7">
-      <div class="hslide-content">
-        <div class="hslide-tag">🧸 Diversión Asegurada</div>
-        <h1 class="hslide-title">JUGUETES PARA<br><em>TODA</em> LA FAMILIA</h1>
-        <p class="hslide-sub">LEGO, drones, muñecas y mucho más para los más pequeños.</p>
-        <button class="hslide-cta" onclick="setCatDirect('juguetes')">Ver Juguetes →</button>
-      </div>
-      <div class="hslide-icon-wrap">
-        <div class="hslide-icon-emoji">🧱</div>
-        <div class="hslide-icon-name">LEGO Halcón Milenario</div>
-        <div class="hslide-icon-price">$6,500 CUP</div>
-      </div>
-    </div>
-    <div class="hslide hslide-8">
-      <div class="hslide-content">
         <div class="hslide-tag">🍎 Sabor Garantizado</div>
         <h1 class="hslide-title">ALIMENTOS &<br><em>GOURMET</em> PREMIUM</h1>
         <p class="hslide-sub">Café, aceite de oliva, especias y más para tu cocina.</p>
@@ -602,6 +507,19 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
         <div class="hslide-icon-emoji">☕</div>
         <div class="hslide-icon-name">Café Molido Premium</div>
         <div class="hslide-icon-price">$420 CUP</div>
+      </div>
+    </div>
+    <div class="hslide hslide-2">
+      <div class="hslide-content">
+        <div class="hslide-tag">🎁 Ahorra Más</div>
+        <h1 class="hslide-title">DESCUBRE LOS<br><em>COMBUKOS</em></h1>
+        <p class="hslide-sub">Combos armados con tus productos favoritos a precio especial.</p>
+        <button class="hslide-cta" onclick="setCatDirect('combukos')">Ver Combukos →</button>
+      </div>
+      <div class="hslide-icon-wrap">
+        <div class="hslide-icon-emoji">🎁</div>
+        <div class="hslide-icon-name">Combuko Desayuno</div>
+        <div class="hslide-icon-price">$1,150 CUP</div>
       </div>
     </div>
   </div>
@@ -615,14 +533,8 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 <!-- CATEGORY SHORTCUTS -->
 <div class="cats-grid-section">
   <div class="cats-grid">
-    <div class="cat-pill" onclick="setCatDirect('electronica')"><div class="cat-pill-icon">📱</div><div class="cat-pill-name">Electrónica</div></div>
     <div class="cat-pill" onclick="setCatDirect('alimentos')"><div class="cat-pill-icon">🍎</div><div class="cat-pill-name">Alimentos</div></div>
-    <div class="cat-pill" onclick="setCatDirect('hogar')"><div class="cat-pill-icon">🏠</div><div class="cat-pill-name">Hogar</div></div>
-    <div class="cat-pill" onclick="setCatDirect('ropa')"><div class="cat-pill-icon">👗</div><div class="cat-pill-name">Ropa</div></div>
-    <div class="cat-pill" onclick="setCatDirect('belleza')"><div class="cat-pill-icon">💄</div><div class="cat-pill-name">Belleza</div></div>
-    <div class="cat-pill" onclick="setCatDirect('deportes')"><div class="cat-pill-icon">⚽</div><div class="cat-pill-name">Deportes</div></div>
-    <div class="cat-pill" onclick="setCatDirect('juguetes')"><div class="cat-pill-icon">🧸</div><div class="cat-pill-name">Juguetes</div></div>
-    <div class="cat-pill" onclick="setCatDirect('salud')"><div class="cat-pill-icon">💊</div><div class="cat-pill-name">Salud</div></div>
+    <div class="cat-pill" onclick="setCatDirect('combukos')"><div class="cat-pill-icon">🎁</div><div class="cat-pill-name">Combukos</div></div>
   </div>
 </div>
 
@@ -797,68 +709,19 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
    BASE DE DATOS DE PRODUCTOS
 ══════════════════════════════════ */
 const PRODUCTS = [
-  // ── ELECTRÓNICA ──
-  {id:'e1', name:'Smartphone Samsung Galaxy A55',  cat:'electronica', price:18500, old:24000, rating:4.8, reviews:312, badge:'sale',  disc:'-23%', freeShip:true,  stock:8,   img:'📱', desc:'6.6" AMOLED, 128GB, 50MP cámara triple. Batería 5000mAh con carga rápida 25W.'},
-  {id:'e2', name:'Audífonos Bluetooth Sony WH-CH520',cat:'electronica',price:3200,old:5500, rating:4.6, reviews:184, badge:'sale',  disc:'-42%', freeShip:true,  stock:15,  img:'🎧', desc:'Sonido de alta fidelidad, 50h de batería, plegables y ultralivianos.'},
-  {id:'e3', name:'Laptop Lenovo IdeaPad 15"',      cat:'electronica', price:32000,old:41000,rating:4.5, reviews:97,  badge:'hot',   disc:'-22%', freeShip:true,  stock:4,   img:'💻', desc:'Intel Core i5 12ª Gen, 8GB RAM, SSD 256GB, Windows 11. Perfecta para trabajo y estudio.'},
-  {id:'e4', name:'Tablet iPad 10ª generación',     cat:'electronica', price:22000,old:null, rating:4.9, reviews:456, badge:'new',   disc:'',     freeShip:true,  stock:12,  img:'📱', desc:'Pantalla 10.9" Liquid Retina, chip A14 Bionic, Wi-Fi 6, cámara 12MP.'},
-  {id:'e5', name:'Smart TV 55" 4K UHD',            cat:'electronica', price:28000,old:38000,rating:4.7, reviews:203, badge:'sale',  disc:'-26%', freeShip:false, stock:6,   img:'📺', desc:'Android TV, HDR10+, Dolby Audio, HDMI x3, USB x2. Marca premium.'},
-  {id:'e6', name:'Parlante JBL Charge 5 Bluetooth',cat:'electronica', price:4800, old:6500, rating:4.8, reviews:529, badge:'hot',   disc:'-26%', freeShip:true,  stock:20,  img:'🔊', desc:'30h de batería, resistente al agua IP67, potencia 40W RMS.'},
-  {id:'e7', name:'Smartwatch Xiaomi Band 8',       cat:'electronica', price:2200, old:3000, rating:4.5, reviews:87,  badge:'sale',  disc:'-27%', freeShip:true,  stock:30,  img:'⌚', desc:'Monitor cardíaco, SpO2, 16 días batería, 150+ modos deportivos.'},
-  {id:'e8', name:'Cámara GoPro Hero 12 Black',     cat:'electronica', price:16500,old:null, rating:4.9, reviews:142, badge:'new',   disc:'',     freeShip:true,  stock:7,   img:'📷', desc:'Video 5.3K60, foto 27MP, HyperSmooth 6.0, sumergible 10m sin carcasa.'},
-
   // ── ALIMENTOS ──
-  {id:'a1', name:'Aceite de Oliva Extra Virgen 1L',cat:'alimentos', price:650,  old:900,  rating:4.7, reviews:223, badge:'sale',  disc:'-28%', freeShip:false, stock:50,  img:'🫒', desc:'Aceite de oliva 100% puro, prensado en frío. Origen España. Ideal para ensaladas y cocinar.'},
-  {id:'a2', name:'Café Molido Premium 500g',       cat:'alimentos', price:420,  old:null, rating:4.9, reviews:387, badge:'hot',   disc:'',     freeShip:false, stock:80,  img:'☕', desc:'Blend especial de granos arábica. Tueste medio-oscuro. Aroma intenso y sabor suave.'},
-  {id:'a3', name:'Arroz Integral Orgánico 2kg',    cat:'alimentos', price:280,  old:350,  rating:4.6, reviews:115, badge:'sale',  disc:'-20%', freeShip:false, stock:100, img:'🌾', desc:'Arroz integral 100% orgánico, sin aditivos. Rico en fibra y nutrientes.'},
-  {id:'a4', name:'Miel de Abeja Pura 500g',        cat:'alimentos', price:380,  old:null, rating:4.8, reviews:201, badge:'new',   disc:'',     freeShip:false, stock:40,  img:'🍯', desc:'Miel multifloral natural sin procesar. Propiedades antibacterianas y antioxidantes.'},
-  {id:'a5', name:'Proteína Whey Gold 2lb',         cat:'alimentos', price:3200, old:4000, rating:4.7, reviews:98,  badge:'sale',  disc:'-20%', freeShip:true,  stock:25,  img:'💪', desc:'25g de proteína por scoop, sabor chocolate. Sin azúcar añadida. ISO certificada.'},
-  {id:'a6', name:'Kit de Especias Gourmet x12',    cat:'alimentos', price:580,  old:750,  rating:4.8, reviews:67,  badge:'hot',   disc:'-23%', freeShip:false, stock:35,  img:'🌶️', desc:'Set de 12 especias premium: cúrcuma, comino, pimentón, canela y más. Lata hermética.'},
+  {id:'a1', name:'Aceite de Soja Extra Virgen 1L', cat:'alimentos', price:60,  old:null,  rating:4.7, reviews:223, badge:'sale',  disc:'', freeShip:false, stock:50,  img:'🫒', desc:'Aceite de oliva 100% puro, prensado en frío. Origen España. Ideal para ensaladas y cocinar.'},
+  {id:'a2', name:'Café Molido Premium 500g',       cat:'alimentos', price:420,  old:null, rating:4.9, reviews:387, badge:'hot',   disc:'', freeShip:false, stock:80,  img:'☕', desc:'Blend especial de granos arábica. Tueste medio-oscuro. Aroma intenso y sabor suave.'},
+  {id:'a3', name:'Arroz Integral Orgánico 2kg',    cat:'alimentos', price:280,  old:350,  rating:4.6, reviews:115, badge:'sale',  disc:'', freeShip:false, stock:100, img:'🌾', desc:'Arroz integral 100% orgánico, sin aditivos. Rico en fibra y nutrientes.'},
+  {id:'a4', name:'Miel de Abeja Pura 500g',        cat:'alimentos', price:380,  old:null, rating:4.8, reviews:201, badge:'new',   disc:'', freeShip:false, stock:40,  img:'🍯', desc:'Miel multifloral natural sin procesar. Propiedades antibacterianas y antioxidantes.'},
+  {id:'a5', name:'Proteína Whey Gold 2lb',         cat:'alimentos', price:3200, old:4000, rating:4.7, reviews:98,  badge:'sale',  disc:'', freeShip:true,  stock:25,  img:'💪', desc:'25g de proteína por scoop, sabor chocolate. Sin azúcar añadida. ISO certificada.'},
+  {id:'a6', name:'Kit de Especias Gourmet x12',    cat:'alimentos', price:580,  old:750,  rating:4.8, reviews:67,  badge:'hot',   disc:'', freeShip:false, stock:35,  img:'🌶️', desc:'Set de 12 especias premium: cúrcuma, comino, pimentón, canela y más. Lata hermética.'},
 
-  // ── HOGAR ──
-  {id:'h1', name:'Aspiradora Robot Xiaomi E10',    cat:'hogar', price:8500, old:12000,rating:4.7, reviews:178, badge:'sale',  disc:'-29%', freeShip:true,  stock:10,  img:'🤖', desc:'Navegación láser LDS, app Mi Home, 2500Pa aspiración, depósito 400ml. Programable.'},
-  {id:'h2', name:'Licuadora Oster 600W',           cat:'hogar', price:1800, old:2500, rating:4.6, reviews:243, badge:'sale',  disc:'-28%', freeShip:false, stock:22,  img:'🥤', desc:'600W, 3 velocidades + pulso, jarra de vidrio 1.5L, cuchillas de acero inox.'},
-  {id:'h3', name:'Colchón Memory Foam King Size',  cat:'hogar', price:14500,old:20000,rating:4.8, reviews:89,  badge:'hot',   disc:'-28%', freeShip:true,  stock:5,   img:'🛏️', desc:'Espuma viscoelástica 30cm, cubierta bambú antibacteriana, ortopédico. Garantía 10 años.'},
-  {id:'h4', name:'Set de Sábanas 100% Algodón',    cat:'hogar', price:890,  old:1200, rating:4.7, reviews:156, badge:'sale',  disc:'-26%', freeShip:false, stock:45,  img:'🛌', desc:'400 hilos, suaves y transpirables. Set completo: sábana plana, ajustable y 2 fundas.'},
-  {id:'h5', name:'Cafetera Nespresso Essenza Mini',cat:'hogar', price:5200, old:7000, rating:4.9, reviews:312, badge:'hot',   disc:'-26%', freeShip:true,  stock:8,   img:'☕', desc:'Compatible cápsulas Nespresso, calentamiento en 25s, 2 tamaños de taza. 1150W.'},
-  {id:'h6', name:'Lámpara LED de Escritorio USB',  cat:'hogar', price:450,  old:650,  rating:4.5, reviews:92,  badge:'sale',  disc:'-31%', freeShip:false, stock:60,  img:'💡', desc:'10 niveles brillo, 3 modos color, puerto USB carga, cuello flexible. Luz sin parpadeo.'},
-  {id:'h7', name:'Ventilador Torre 40W Silencioso',cat:'hogar', price:2100, old:null, rating:4.6, reviews:73,  badge:'new',   disc:'',     freeShip:false, stock:18,  img:'🌀', desc:'3 velocidades, oscilación 90°, modo sueño, mando a distancia, timer 8h.'},
-  {id:'h8', name:'Set de Ollas Acero Inox x5',     cat:'hogar', price:2800, old:4000, rating:4.7, reviews:128, badge:'sale',  disc:'-30%', freeShip:true,  stock:14,  img:'🍳', desc:'Acero inoxidable 18/10, compatible inducción, tapa de vidrio. 16-20-24-26-28cm.'},
-
-  // ── ROPA ──
-  {id:'r1', name:'Camiseta Oversize Premium',      cat:'ropa', price:450,  old:700,  rating:4.6, reviews:201, badge:'sale',  disc:'-36%', freeShip:false, stock:30,  img:'👕', desc:'100% algodón peinado, gramaje 280g. Corte oversize, cuello redondo reforzado.'},
-  {id:'r2', name:'Jeans Slim Fit Stretch',         cat:'ropa', price:1200, old:1800, rating:4.5, reviews:143, badge:'hot',   disc:'-33%', freeShip:false, stock:25,  img:'👖', desc:'97% algodón, 3% elastano. 5 bolsillos, lavado medio. Varios colores disponibles.'},
-  {id:'r3', name:'Sneakers Running Air Max 270',   cat:'ropa', price:3500, old:5000, rating:4.8, reviews:267, badge:'sale',  disc:'-30%', freeShip:true,  stock:12,  img:'👟', desc:'Cámara de aire visible, suela foam, upper knit transpirable. Ideal deporte y casual.'},
-  {id:'r4', name:'Chaqueta Impermeable Montaña',   cat:'ropa', price:2800, old:null, rating:4.7, reviews:88,  badge:'new',   disc:'',     freeShip:true,  stock:9,   img:'🧥', desc:'Membrana impermeable 10.000mm, sellada en costuras, capucha ajustable. Ligera 350g.'},
-  {id:'r5', name:'Vestido Midi Floral Verano',     cat:'ropa', price:850,  old:1200, rating:4.6, reviews:118, badge:'sale',  disc:'-29%', freeShip:false, stock:20,  img:'👗', desc:'Viscosa suave con estampado floral. Tirantes regulables, corte A-line. Tallas S-XXL.'},
-
-  // ── BELLEZA ──
-  {id:'b1', name:'Sérum Vitamina C + Retinol',     cat:'belleza', price:920,  old:1400, rating:4.8, reviews:342, badge:'hot',   disc:'-34%', freeShip:false, stock:40,  img:'✨', desc:'30ml, acción antioxidante y antiedad. Fórmula estabilizada, pH 3.5. Dermatológicamente probado.'},
-  {id:'b2', name:'Perfume Dior Sauvage EDP 100ml', cat:'belleza', price:8500, old:null, rating:4.9, reviews:521, badge:'new',   disc:'',     freeShip:true,  stock:6,   img:'🌸', desc:'Fragancia amaderada-especiada. Notas: bergamota, ambroxan, sándalo. Duración 8-10h.'},
-  {id:'b3', name:'Set Maquillaje 12 Piezas Pro',   cat:'belleza', price:1800, old:2800, rating:4.6, reviews:189, badge:'sale',  disc:'-36%', freeShip:false, stock:22,  img:'💄', desc:'Base, corrector, rubor, iluminador, 4 sombras, labiales x2 y más. Todo incluido.'},
-  {id:'b4', name:'Plancha de Cabello Profesional', cat:'belleza', price:2200, old:3500, rating:4.7, reviews:76,  badge:'sale',  disc:'-37%', freeShip:false, stock:15,  img:'💇', desc:'Placas de titanio, calentamiento en 30s, temp. ajustable 150-230°C. Iones negativos.'},
-  {id:'b5', name:'Crema Hidratante Día SPF50',     cat:'belleza', price:680,  old:null, rating:4.7, reviews:247, badge:'hot',   disc:'',     freeShip:false, stock:55,  img:'🧴', desc:'50ml, protección solar alta, textura ligera, sin parabenos. Apta piel mixta-grasa.'},
-
-  // ── DEPORTES ──
-  {id:'d1', name:'Bicicleta Montaña 29" 21vel',    cat:'deportes', price:12000,old:17000,rating:4.7, reviews:93,  badge:'sale',  disc:'-29%', freeShip:false, stock:4,   img:'🚴', desc:'Cuadro aluminio, frenos de disco, cambios Shimano 21v, horquilla doble suspensión.'},
-  {id:'d2', name:'Mat Yoga Antideslizante 6mm',     cat:'deportes', price:650,  old:900,  rating:4.8, reviews:318, badge:'hot',   disc:'-28%', freeShip:false, stock:35,  img:'🧘', desc:'PVC ecológico libre de látex, 183x61cm, 6mm espesor. Bolsa de transporte incluida.'},
-  {id:'d3', name:'Mancuernas Ajustables 20kg Set', cat:'deportes', price:3200, old:4500, rating:4.9, reviews:145, badge:'sale',  disc:'-29%', freeShip:true,  stock:8,   img:'🏋️', desc:'Sistema de ajuste rápido 4kg-20kg por mancuerna. Reemplaza 15 pares. Ahorra espacio.'},
-  {id:'d4', name:'Zapatillas Running Nike React',   cat:'deportes', price:4800, old:6500, rating:4.8, reviews:212, badge:'hot',   disc:'-26%', freeShip:true,  stock:14,  img:'👟', desc:'Espuma React ultraligera, placa de fibra de carbono, upper Flyknit. Drop 8mm.'},
-  {id:'d5', name:'Cuerda de Saltar Profesional',   cat:'deportes', price:320,  old:500,  rating:4.6, reviews:89,  badge:'sale',  disc:'-36%', freeShip:false, stock:50,  img:'🪢', desc:'Cable de acero, handles ergonómicos con rodamiento, ajustable 3m. Incluye bolsa.'},
-
-  // ── JUGUETES ──
-  {id:'j1', name:'LEGO Star Wars Halcón Milenario',cat:'juguetes', price:6500, old:null, rating:4.9, reviews:289, badge:'new',   disc:'',     freeShip:true,  stock:7,   img:'🧱', desc:'1351 piezas, incluye 7 minifiguras. Para mayores de 9 años. Set coleccionable.'},
-  {id:'j2', name:'Dron con Cámara 4K Para Niños',  cat:'juguetes', price:2800, old:4000, rating:4.6, reviews:94,  badge:'sale',  disc:'-30%', freeShip:true,  stock:11,  img:'🚁', desc:'Cámara 4K, 20min vuelo, modo estático, control remoto + app. Hélices protegidas.'},
-  {id:'j3', name:'Muñeca Barbie Dreamhouse',       cat:'juguetes', price:1800, old:2500, rating:4.7, reviews:167, badge:'hot',   disc:'-28%', freeShip:false, stock:15,  img:'🪆', desc:'Casa de 3 pisos, 8 habitaciones, ascensor, tobogán. 70+ piezas de accesorios.'},
-  {id:'j4', name:'Auto Control Remoto Offroad',    cat:'juguetes', price:1200, old:1700, rating:4.5, reviews:78,  badge:'sale',  disc:'-29%', freeShip:false, stock:22,  img:'🚗', desc:'4WD, escala 1:16, 30km/h, batería recargable 40min uso. Apto interior y exterior.'},
-  {id:'j5', name:'Puzzle 3D Madera 500 Piezas',    cat:'juguetes', price:580,  old:null, rating:4.8, reviews:112, badge:'new',   disc:'',     freeShip:false, stock:28,  img:'🧩', desc:'Madera de calidad, corte láser. Diseño arquitectónico. Para mayores de 12 años.'},
-
-  // ── SALUD ──
-  {id:'s1', name:'Tensiómetro Digital de Brazo',   cat:'salud', price:1400, old:2000, rating:4.8, reviews:267, badge:'sale',  disc:'-30%', freeShip:false, stock:20,  img:'🩺', desc:'Pantalla LCD grande, memoria 90 mediciones, detección arritmia, 2 usuarios.'},
-  {id:'s2', name:'Vitaminas C + Zinc 60 Cápsulas', cat:'salud', price:380,  old:500,  rating:4.7, reviews:198, badge:'hot',   disc:'-24%', freeShip:false, stock:80,  img:'💊', desc:'1000mg Vitamina C + 15mg Zinc. Refuerza inmunidad, antioxidante. Sin gluten.'},
-  {id:'s3', name:'Colágeno Hidrolizado 500g',      cat:'salud', price:850,  old:1200, rating:4.6, reviews:143, badge:'sale',  disc:'-29%', freeShip:false, stock:45,  img:'🥛', desc:'20g de colágeno por porción. Piel, articulaciones y huesos. Sin sabor, mezcla fácil.'},
-  {id:'s4', name:'Masajeador Eléctrico de Cuello', cat:'salud', price:1800, old:2600, rating:4.7, reviews:89,  badge:'sale',  disc:'-31%', freeShip:true,  stock:16,  img:'🌡️', desc:'6 modos masaje, calor infrarrojo, inalámbrico, batería 2400mAh. Ergonómico.'},
-  {id:'s5', name:'Báscula Inteligente Xiaomi',     cat:'salud', price:650,  old:null, rating:4.8, reviews:412, badge:'new',   disc:'',     freeShip:false, stock:35,  img:'⚖️', desc:'13 indicadores corporales, app Mi Fit, capacidad 150kg, precisión 0.1kg. Bluetooth.'},
+  // ── COMBUKOS (combos especiales) ──
+  {id:'co1', name:'Combuko Desayuno Completo',     cat:'combukos', price:1150, old:1450, rating:4.9, reviews:54, badge:'hot',   disc:'-21%', freeShip:false, stock:20,  img:'🎁', desc:'Incluye Café Molido Premium 500g + Miel de Abeja Pura 500g. El combo perfecto para empezar el día.'},
+  {id:'co2', name:'Combuko Cocina Gourmet',        cat:'combukos', price:1350, old:1730, rating:4.8, reviews:39, badge:'sale',  disc:'-22%', freeShip:false, stock:15,  img:'🎁', desc:'Incluye Aceite de Oliva Extra Virgen 1L + Kit de Especias Gourmet x12. Todo para cocinar como un chef.'},
+  {id:'co3', name:'Combuko Fitness',               cat:'combukos', price:3350, old:3900, rating:4.7, reviews:28, badge:'sale',  disc:'-14%', freeShip:true,  stock:10,  img:'🎁', desc:'Incluye Proteína Whey Gold 2lb + Arroz Integral Orgánico 2kg. Ideal para tu rutina y alimentación saludable.'},
+  {id:'co4', name:'Combuko Despensa Familiar',     cat:'combukos', price:1500, old:1930, rating:4.9, reviews:46, badge:'new',   disc:'',     freeShip:true,  stock:12,  img:'🎁', desc:'Incluye Arroz Integral 2kg + Aceite de Oliva 1L + Miel de Abeja 500g. La base de la despensa a un gran precio.'},
 ];
 
 /* ══════════════════════════════════
@@ -881,7 +744,7 @@ let pdQty_n    = 1;
 //  TASA DE CAMBIO — SOLO TÚ EDITAS ESTE NÚMERO
 //  Cambia el valor cuando cambie el tipo de cambio.
 // ══════════════════════════════════════════════════════
-const TASA_USD = 380; // ← cuántos CUP vale 1 USD
+const TASA_USD = 1; // ← cuántos CUP vale 1 USD
 
 // fmt: muestra el precio en la moneda activa
 const fmt = n => currency==='USD'
@@ -896,7 +759,7 @@ const starsHtml = r => {
   const full=Math.floor(r), half=(r%1>=.5)?1:0, empty=5-full-half;
   return '★'.repeat(full)+(half?'½':'')+('☆'.repeat(empty));
 };
-const catNames = {electronica:'Electrónica',alimentos:'Alimentos',hogar:'Hogar',ropa:'Ropa',belleza:'Belleza',deportes:'Deportes',juguetes:'Juguetes',salud:'Salud'};
+const catNames = {alimentos:'Alimentos', combukos:'Combukos'};
 
 /* ══════════════════════════════════
    TEMA
@@ -918,7 +781,7 @@ function initTheme(){
 /* ══════════════════════════════════
    HERO CARRUSEL
 ══════════════════════════════════ */
-let heroIdx=0, heroTotal=8, heroTimer;
+let heroIdx=0, heroTotal=2, heroTimer;
 function buildHeroDots(){
   document.getElementById('heroDots').innerHTML=
     Array.from({length:heroTotal},(_,i)=>`<div class="hero-dot ${i===0?'on':''}"></div>`).join('');
@@ -947,7 +810,7 @@ function setCat(c, btn){
 function setCatDirect(c){
   currentCat=c;
   document.querySelectorAll('.cattab').forEach((b,i)=>{
-    const cats=['all','electronica','alimentos','hogar','ropa','belleza','deportes','juguetes','salud'];
+    const cats=['all','alimentos','combukos'];
     b.classList.toggle('active',cats[i]===c);
   });
   renderGrid();
@@ -1308,7 +1171,7 @@ function toast(msg){
 /* ══════════════════════════════════
    CAMBIO DE MONEDA
 ══════════════════════════════════ */
-let currency = 'CUP';
+let currency = 'USD'; // ← Fijo en USD mientras la barra de moneda está desactivada. Vuelve a 'CUP' si quieres que abra en CUP al reactivarla.
 function setCurrency(c){
   currency = c;
   document.getElementById('btnCUP').classList.toggle('active', c==='CUP');
