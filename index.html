@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mercaduko — Todo en un lugar</title>
@@ -184,6 +185,13 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
   border-radius:6px;cursor:not-allowed;text-align:center;
 }
 
+/* ══ SELECTOR DE SABORES ══ */
+.flavor-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 8px;}
+.flavor-label{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gray);margin-right:2px;}
+.flavor-chip{border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:20px;cursor:pointer;transition:all .15s;}
+.flavor-chip:hover{border-color:var(--blue);color:var(--blue);}
+.flavor-chip.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+
 /* MODAL */
 .pd-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3500;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
 @media(min-width:640px){.pd-overlay{align-items:center;}}
@@ -223,6 +231,10 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 .pd-disc{font-size:12px;font-weight:800;color:var(--red);background:var(--red-bg);padding:3px 8px;border-radius:4px;}
 .pd-desc{font-size:13px;color:var(--text2);line-height:1.75;border-left:3px solid var(--border);padding-left:10px;}
 .pd-ship{font-size:12px;color:var(--green);font-weight:700;display:flex;align-items:center;gap:5px;background:var(--green-bg);padding:8px 12px;border-radius:8px;}
+
+/* Selector de sabores en el modal */
+.pd-flavor-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.pd-flavor-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-right:2px;}
 
 /* Aviso agotado en modal */
 .pd-out-notice{
@@ -408,7 +420,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 <nav>
   <a class="nav-logo" href="#">MERCADUK<span class="heart-o">💚</span></a>
   <div class="nav-search">
-    <input type="text" id="searchInput" placeholder="🔍  Buscar productos, marcas..." oninput="onSearch()">
+    <input type="text" id="searchInput" placeholder="Buscar productos, marcas..." oninput="onSearch()">
     <button class="nav-search-btn" onclick="onSearch()">🔍</button>
   </div>
   <div class="nav-actions">
@@ -426,6 +438,8 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
   <button class="cattab active" onclick="setCat('all',this)"><span class="cattab-icon">🏪</span>Todo</button>
   <button class="cattab" onclick="setCat('alimentos',this)"><span class="cattab-icon">🍎</span>Alimentos</button>
   <button class="cattab" onclick="setCat('aseo',this)"><span class="cattab-icon">🧴</span>Aseo</button>
+  <button class="cattab" onclick="setCat('aseo',this)"><span class="cattab-icon">🧃</span>Bebidas</button>
+
 </div>
 
 <div class="hero-wrap">
@@ -479,6 +493,8 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
   <div class="cats-grid">
     <div class="cat-pill" onclick="setCatDirect('alimentos')"><div class="cat-pill-icon">🍎</div><div class="cat-pill-name">Alimentos</div></div>
     <div class="cat-pill" onclick="setCatDirect('aseo')"><div class="cat-pill-icon">🧴</div><div class="cat-pill-name">Aseo</div></div>
+    <div class="cat-pill" onclick="setCatDirect('Bebidas')"><div class="cat-pill-icon">🧃</div><div class="cat-pill-name">Bebidas</div></div>
+
   </div>
 </div>
 
@@ -507,6 +523,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
       </div>
       <div class="pd-price-row" id="pdPriceRow"></div>
       <p class="pd-desc" id="pdDesc"></p>
+      <div id="pdFlavorSection"></div>
       <div id="pdShipOrOut"></div>
       <div id="pdQtySection">
         <div class="pd-qty-row">
@@ -573,6 +590,21 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
     <div class="fgroup"><label>👤 Nombre completo *</label><input type="text" id="fName" placeholder="María García" maxlength="80"><div class="ferr" id="fNameErr">⚠ Ingresa tu nombre</div></div>
     <div class="fgroup"><label>📞 Teléfono / WhatsApp *</label><input type="tel" id="fPhone" placeholder="+53 5 555 5555" maxlength="20"><div class="ferr" id="fPhoneErr">⚠ Ingresa tu teléfono</div></div>
     <div class="fgroup"><label>🏠 Dirección de entrega *</label><textarea id="fAddr" rows="3" placeholder="Calle, número, municipio, provincia..."></textarea><div class="ferr" id="fAddrErr">⚠ Ingresa tu dirección</div></div>
+   <div class="fgroup">
+  <label>📍 Zona de entrega *</label>
+  <select id="fZone" onchange="updateZona()">
+    <option value="">-- Selecciona tu zona --</option>
+    <option value="gratis">📍 Cueto — Envío GRATIS</option>
+    <option value="cobro">🚗 Mayarí — $15.00 USD</option>
+    <option value="cobro">🚗 Marcané — $7.00 USD</option>
+    <option value="cobro">🚗 Birán — $8.00 USD</option>
+    <option value="cobro">🚗 Guaro — $7.00 USD</option>
+    <option value="cobro">🚗 Barajagua-Mejia — $5.00 USD</option>
+
+  </select>
+  <div class="ferr" id="fZoneErr">⚠ Selecciona tu zona</div>
+  <div id="fZoneInfo" style="display:none;margin-top:7px;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;"></div>
+</div>
     <div class="fgroup"><label>🕐 Horario preferido</label><select id="fTime"><option value="">Cualquier horario</option><option value="Mañana (8am-12pm)">Mañana (8am - 12pm)</option><option value="Tarde (12pm-6pm)">Tarde (12pm - 6pm)</option><option value="Noche (6pm-9pm)">Noche (6pm - 9pm)</option></select></div>
     <div class="fgroup"><label>📝 Nota (opcional)</label><textarea id="fNote" rows="2" placeholder="Instrucciones especiales..."></textarea></div>
     <button class="wa-send-btn" onclick="sendOrder()">💬 Enviar Pedido por WhatsApp</button>
@@ -612,6 +644,17 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 <div class="toast" id="toast"></div>
 
 <script>
+
+/* ══════════════════════════════════════════════════════════
+   🔧 MODO MANTENIMIENTO
+   
+   true  → redirige a mantenimiento.html automáticamente
+   false → la tienda funciona normal
+══════════════════════════════════════════════════════════ */
+const MANTENIMIENTO =false;
+if(MANTENIMIENTO) window.location.replace('mantenimiento.html');
+</script>
+<script>
 /* ══════════════════════════════════════════════════════════
    BASE DE DATOS DE PRODUCTOS
    
@@ -630,13 +673,24 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
    │    Agrega  visible: false                             │
    │  Para volver a mostrarlo:                             │
    │    Cambia a  visible: true  o borra esa línea        │
+   │                                                        │
+   │  ┌─ SABORES (OPCIONAL) ────────────────────────────┐ │
+   │  │ Si un producto viene en varios sabores, agrega: │ │
+   │  │   flavors: [                                    │ │
+   │  │     {name:'Cola', img:'images/refreCc.jpg'},     │ │
+   │  │     {name:'Naranja', img:'images/refreNar.jpg'}  │ │
+   │  │   ]                                              │ │
+   │  │ Al elegir un sabor, la foto del producto cambia │ │
+   │  │ automáticamente tanto en la tarjeta como en el  │ │
+   │  │ detalle. Sube una foto por sabor a /images/.    │ │
+   │  └──────────────────────────────────────────────────┘ │
    └────────────────────────────────────────────────────────┘
 ══════════════════════════════════════════════════════════ */
 const PRODUCTS = [
   // ── ALIMENTOS ──
   {
     id:'a1', name:'Frijoles Negros bolsa 5lb', cat:'alimentos', price:3.50, old:null,rating:4.7, reviews:223, badge:'hot', disc:'',
-    freeShip:false,
+    freeShip:true,
     stock: 15,          // ← Cambia a 0 cuando se agote
     visible: true,      // ← false para ocultar sin borrar
     img:'images/frijolesn.jpg',
@@ -646,7 +700,7 @@ const PRODUCTS = [
     id:'a2', name:'Azúcar Blanca bolsa de 5lb',
     cat:'alimentos', price:4.50, old:null,
     rating:4.9, reviews:387, badge:'sale', disc:'',
-    freeShip:false,
+    freeShip:true,
     stock: 50,           // ← AGOTADO: sale en la tienda con sello
     visible: true,
     img:'images/azucar.jpg',
@@ -656,38 +710,38 @@ const PRODUCTS = [
     id:'a3', name:'Arroz El Rey del Arroz 1kg',
     cat:'alimentos', price:1.50, old:null,
     rating:4.6, reviews:115, badge:'new', disc:'',
-    freeShip:false,
+    freeShip:true,
     stock: 100,
     visible: true,
     img:'images/Arroz p.jpg',
     desc:'Arroz blanco de grano extra largo de Demara. Non GMO, calidad de exportación.'
   },
   {
-    id:'a4', name:'Paquete de Pollo',
+    id:'a4', name:'Paquete de Pollo [muslo]',
     cat:'alimentos', price:13, old:null,
     rating:4.8, reviews:201, badge:'hot', disc:'',
-    freeShip:false,
-    stock: 20,
+    freeShip:true,
+    stock: 0,
     visible: true,
     img:'images/pollo.jpg',
     desc:'Muslos de pollo joven paquetes de,. Calidad premium.'
   },
   {
-    id:'a5', name:'Picadillo de Pollo 500g',
-    cat:'alimentos', price:4.50, old:null,
+    id:'a5', name:'Picadillo de Pollo x lb',
+    cat:'alimentos', price:1, old:null,
     rating:4.7, reviews:98, badge:'new', disc:'',
-    freeShip:false,
-    stock: 0,           // ← AGOTADO
+    freeShip:true,
+    stock: 80,           // ← AGOTADO
     visible: true,
-    img:'',
+    img:'images/piclb.jpg',
     desc:'Picadillo de pollo fresco, molido al momento. Listo para cocinar.'
   },
   {
     id:'a6', name:'Huevos de Exportación x30',
     cat:'alimentos', price:8, old:null,
     rating:4.8, reviews:90, badge:'hot', disc:'',
-    freeShip:false,
-    stock: 0,
+    freeShip:true,
+    stock: 34,
     visible: true,
     img:'images/huevos.jpg',
     desc:'Cartón de 30 huevos de exportación, blancos, talla grande. Frescos.'
@@ -696,17 +750,17 @@ const PRODUCTS = [
     id:'a7', name:'Aceite de soja ',
     cat:'alimentos', price:5, old:null,
     rating:4.8, reviews:67, badge:'hot', disc:'',
-    freeShip:false,
-    stock: 0,
+    freeShip:true,
+    stock: 20,
     visible: true,
     img:'images/aceite.jpg',
     desc:'Aceite de soja sublime calidad extrema'
   },
   {
     id:'a8', name:'Spaghetti 500g',
-    cat:'alimentos', price:0.70, old:null,
+    cat:'alimentos', price:1, old:null,
     rating:4.8, reviews:61, badge:'hot', disc:'',
-    freeShip:false,
+    freeShip:true,
     stock: 35,
     visible: true,
     img:'images/spagueti.jpg',
@@ -716,11 +770,31 @@ const PRODUCTS = [
     id:'a9', name:'Jamonada por lb',
     cat:'alimentos', price:1, old:null,
     rating:4.8, reviews:57, badge:'hot', disc:'',
-    freeShip:false,
-    stock: 0,
+    freeShip:true,
+    stock: 50,
     visible: true,
     img:'images/jamonada.jpg',
     desc:'Aceite de soja sublime calidad extrema'
+  },
+  {
+    id:'a10', name:'Paquete de Pollo {muslo-contramuslo}',
+    cat:'alimentos', price:13, old:null,
+    rating:4.8, reviews:201, badge:'hot', disc:'',
+    freeShip:true,
+    stock: 0,
+    visible: true,
+    img:'images/cadera.jpg',
+    desc:'Muslos con contramuslo de pollo,. Calidad premium.'
+  },
+  {
+    id:'a11', name:'Picadillo Mixto',
+    cat:'alimentos', price:1.50, old:null,
+    rating:4.8, reviews:201, badge:'hot', disc:'',
+    freeShip:true,
+    stock: 20,
+    visible: true,
+    img:'images/pictubo.jpg',
+    desc:'Picadillo mixto. Calidad premium.'
   },
 
   // ── ASEO ──
@@ -728,11 +802,29 @@ const PRODUCTS = [
     id:'as1', name:'Detergente Defa 500g',
     cat:'aseo', price:1.50, old:null,
     rating:4.7, reviews:312, badge:'sale', disc:'-21%',
-    freeShip:false,
-    stock: 60,
+    freeShip:true,
+    stock: 0,
     visible: true,
     img:'images/detergd.jpg',
     desc:'Detergente Defa 500g, fragancia suave y limpieza profunda. Para ropa de color y blanca.'
+  },
+
+   // ── BEBIDAS ──
+  {
+    id:'be1', name:'Cajas de Refresco de lata ',
+    cat:'Bebidas', price:23, old:null,
+    rating:4.7, reviews:312, badge:'sale', disc:'',
+    freeShip:true,
+    stock: 10,
+    visible: true,
+    img:'images/refreCc.jpg',
+    desc:'Refresco Gaseado refrescante y dulce.',
+    // Sube una foto por cada sabor a la carpeta /images/ con estos nombres
+    // (o cambia la ruta por la que uses). Agrega/quita sabores libremente.
+    flavors:[
+      {name:'Cola',     img:'images/refreC.jpg'},
+      {name:'Naranja',  img:'images/refreN.jpg'},
+      ]
   },
 ];
 
@@ -745,6 +837,7 @@ let cart       = {};
 let wish       = new Set();
 let pdProd     = null;
 let pdQty_n    = 1;
+let selectedFlavor = {}; // { productId: 'NombreDelSabor' }
 
 /* ── Helpers ── */
 const fmt = n => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' USD';
@@ -757,6 +850,18 @@ const catNames = {alimentos:'Alimentos', aseo:'Aseo'};
 
 /* Determina si un producto está agotado */
 const isOutOfStock = p => p.stock === 0;
+
+/* ══ Helpers de SABORES ══
+   Cada combinación producto+sabor es una "llave" distinta en el carrito,
+   así el cliente puede llevar, por ejemplo, Cola y Naranja al mismo tiempo. */
+const hasFlavors = p => Array.isArray(p.flavors) && p.flavors.length>0;
+const flavorOf = p => hasFlavors(p) ? (selectedFlavor[p.id] || p.flavors[0].name) : null;
+const cartKeyOf = p => { const f=flavorOf(p); return f ? p.id+'__'+f : p.id; };
+const imgOf = p => {
+  const f=flavorOf(p);
+  if(f){ const fl=p.flavors.find(x=>x.name===f); if(fl && fl.img) return fl.img; }
+  return p.img;
+};
 
 /* TEMA */
 function toggleTheme(){
@@ -842,9 +947,12 @@ function renderGrid(){
 
   document.getElementById('grid').innerHTML = displayed.map(p => {
     const oos     = isOutOfStock(p);
-    const inCart  = cart[p.id]?cart[p.id].qty:0;
+    const ckey    = cartKeyOf(p);
+    const inCart  = cart[ckey]?cart[ckey].qty:0;
     const inWish  = wish.has(p.id);
     const discPct = p.old?Math.round((1-p.price/p.old)*100):0;
+    const dispImg = imgOf(p);
+    const curFlavor = flavorOf(p);
 
     // Badge principal (solo si NO es agotado)
     const mainBadge = (!oos && p.badge)
@@ -859,10 +967,19 @@ function renderGrid(){
       ? `<span class="pbadge pbadge-agotado" style="top:8px;left:8px">AGOTADO</span>`
       : mainBadge;
 
+    // Selector de sabores (solo si el producto tiene flavors y no está agotado)
+    const flavorRow = (hasFlavors(p) && !oos)
+      ? `<div class="flavor-row" onclick="event.stopPropagation()">
+           <span class="flavor-label">Sabor:</span>
+           ${p.flavors.map(fl=>`<button class="flavor-chip ${curFlavor===fl.name?'active':''}"
+             onclick="pickFlavorCard('${p.id}','${fl.name.replace(/'/g,"\\'")}')">${fl.name}</button>`).join('')}
+         </div>`
+      : '';
+
     // Botón de añadir o "Sin stock"
     const addBtn = oos
       ? `<button class="padd-btn-out" disabled>Sin stock</button>`
-      : `<button class="padd-btn ${inCart?'added':''}" id="cardBtn_${p.id}"
+      : `<button class="padd-btn ${inCart?'added':''}" id="cardBtn_${ckey}"
            onclick="event.stopPropagation();addToCartFromCard('${p.id}')">
            ${inCart?`🛒 Ver Carrito (${inCart})`:'+ Agregar'}
          </button>`;
@@ -871,16 +988,16 @@ function renderGrid(){
     const qtyCtrl = oos
       ? `<div style="flex:0"></div>`
       : `<div class="qty-wrap">
-           <button class="qty-btn" onclick="cardQtyChange('${p.id}',-1)">−</button>
-           <span class="qty-num" id="cardQty_${p.id}">${inCart||1}</span>
-           <button class="qty-btn" onclick="cardQtyChange('${p.id}',1)">+</button>
+           <button class="qty-btn" onclick="cardQtyChange('${ckey}',-1)">−</button>
+           <span class="qty-num" id="cardQty_${ckey}">${inCart||1}</span>
+           <button class="qty-btn" onclick="cardQtyChange('${ckey}',1)">+</button>
          </div>`;
 
     return `<div class="pcard ${oos?'out-of-stock':''}" onclick="${oos?'openPD(\''+p.id+'\')':'openPD(\''+p.id+'\')'}">
       ${oosBadge}
       <button class="pwish-btn ${inWish?'on':''}" onclick="quickWish('${p.id}',this,event)">${inWish?'❤️':'🤍'}</button>
       <div class="pimg-wrap">
-        ${isUrl(p.img)?`<img src="${p.img}" alt="${p.name}" loading="lazy">`:`<div class="pimg-emoji">${p.img||'📦'}</div>`}
+        ${isUrl(dispImg)?`<img src="${dispImg}" alt="${p.name}" loading="lazy">`:`<div class="pimg-emoji">${dispImg||'📦'}</div>`}
         ${stampHtml}
       </div>
       <div class="pinfo">
@@ -895,6 +1012,7 @@ function renderGrid(){
           ${p.old?`<span class="pprice-old">${fmt(p.old)}</span><span class="pdiscount">-${discPct}%</span>`:''}
         </div>
         ${p.freeShip&&!oos?`<div class="pfree-ship">🚚 Envío gratis</div>`:''}
+        ${flavorRow}
         <div class="padd-row" onclick="event.stopPropagation()">
           ${qtyCtrl}
           ${addBtn}
@@ -902,6 +1020,12 @@ function renderGrid(){
       </div>
     </div>`;
   }).join('');
+}
+
+/* Cambia el sabor elegido de un producto (tarjeta) y refresca la foto */
+function pickFlavorCard(id, flavorName){
+  selectedFlavor[id] = flavorName;
+  renderGrid();
 }
 
 const cardQtyMap={};
@@ -913,11 +1037,13 @@ function cardQtyChange(id,d){
 function addToCartFromCard(id){
   const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
   if(isOutOfStock(p)){toast('⚠️ Producto agotado'); return;}
-  if(cart[id]){toggleCart(); return;}
-  const qty=cardQtyMap[id]||1;
-  cart[id]={product:p,qty};
+  const ckey=cartKeyOf(p);
+  const flavor=flavorOf(p);
+  if(cart[ckey]){toggleCart(); return;}
+  const qty=cardQtyMap[ckey]||1;
+  cart[ckey]={product:p,qty,flavor};
   updateCart(); renderGrid(); updateWishPanel();
-  toast(`✅ ${p.name} ×${qty} agregado`);
+  toast(`✅ ${p.name}${flavor?' ('+flavor+')':''} ×${qty} agregado`);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -930,9 +1056,10 @@ function openPD(id){
   const oos=isOutOfStock(p);
   const discPct=p.old?Math.round((1-p.price/p.old)*100):0;
 
-  // Imagen + sello
+  // Imagen + sello (usa la foto del sabor seleccionado, si aplica)
   const imgSide=document.getElementById('pdImgSide');
-  imgSide.innerHTML=(isUrl(p.img)?`<img src="${p.img}" alt="${p.name}">`:`<div class="pd-img-emoji">${p.img||'📦'}</div>`)
+  const dispImg=imgOf(p);
+  imgSide.innerHTML=(isUrl(dispImg)?`<img src="${dispImg}" alt="${p.name}">`:`<div class="pd-img-emoji">${dispImg||'📦'}</div>`)
     + (oos?`<div class="pd-out-stamp">⛔ AGOTADO</div>`:'');
 
   document.getElementById('pdCat').textContent=catNames[p.cat];
@@ -944,6 +1071,19 @@ function openPD(id){
   if(p.old) ph+=`<span class="pd-old">${fmt(p.old)}</span><span class="pd-disc">-${discPct}%</span>`;
   document.getElementById('pdPriceRow').innerHTML=ph;
   document.getElementById('pdDesc').textContent=p.desc;
+
+  // Selector de sabores en el modal
+  const flavorSec=document.getElementById('pdFlavorSection');
+  if(hasFlavors(p) && !oos){
+    const curFlavor=flavorOf(p);
+    flavorSec.innerHTML=`<div class="pd-flavor-row" id="pdFlavorRow">
+        <span class="pd-flavor-label">Sabor:</span>
+        ${p.flavors.map(fl=>`<button class="flavor-chip ${curFlavor===fl.name?'active':''}"
+          data-flavor="${fl.name}" onclick="pickFlavorPD('${p.id}','${fl.name.replace(/'/g,"\\'")}')">${fl.name}</button>`).join('')}
+      </div>`;
+  } else {
+    flavorSec.innerHTML='';
+  }
 
   // Zona de envío o aviso agotado
   const soEl=document.getElementById('pdShipOrOut');
@@ -962,7 +1102,7 @@ function openPD(id){
     actEl.innerHTML=`<button class="pd-add-btn-out" disabled>⛔ Producto Agotado</button>
       <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
   } else {
-    const inCart=cart[p.id];
+    const inCart=cart[cartKeyOf(p)];
     if(inCart){
       actEl.innerHTML=`<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${inCart.qty})</button>
         <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
@@ -984,15 +1124,46 @@ function closePD(){document.getElementById('pdOverlay').classList.remove('open')
 document.getElementById('pdOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('pdOverlay'))closePD();});
 
 function pdQty(d){pdQty_n=Math.max(1,pdQty_n+d);document.getElementById('pdQnum').textContent=pdQty_n;}
+
+/* Cambia el sabor elegido dentro del modal: actualiza la foto y los chips
+   sin cerrar el modal ni perder la cantidad que el cliente ya eligió. */
+function pickFlavorPD(id, flavorName){
+  selectedFlavor[id]=flavorName;
+  const p=pdProd; if(!p) return;
+  const oos=isOutOfStock(p);
+  const dispImg=imgOf(p);
+  document.getElementById('pdImgSide').innerHTML=
+    (isUrl(dispImg)?`<img src="${dispImg}" alt="${p.name}">`:`<div class="pd-img-emoji">${dispImg||'📦'}</div>`)
+    + (oos?`<div class="pd-out-stamp">⛔ AGOTADO</div>`:'');
+  document.querySelectorAll('#pdFlavorRow .flavor-chip').forEach(b=>{
+    b.classList.toggle('active', b.dataset.flavor===flavorName);
+  });
+  // Si el producto ya estaba en el carrito con otro sabor, el botón de acción
+  // debe reflejar el sabor recién elegido (puede ser uno nuevo en el carrito)
+  const actEl=document.getElementById('pdActions');
+  const inCart=cart[cartKeyOf(p)];
+  if(!oos){
+    if(inCart){
+      actEl.innerHTML=`<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${inCart.qty})</button>
+        <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
+    } else {
+      actEl.innerHTML=`<button class="pd-add-btn" onclick="addFromPD()">+ Agregar al Carrito</button>
+        <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
+    }
+  }
+}
+
 function addFromPD(){
   const p=pdProd; if(!p||isOutOfStock(p)) return;
-  if(cart[p.id]) cart[p.id].qty+=pdQty_n;
-  else cart[p.id]={product:p,qty:pdQty_n};
+  const ckey=cartKeyOf(p);
+  const flavor=flavorOf(p);
+  if(cart[ckey]) cart[ckey].qty+=pdQty_n;
+  else cart[ckey]={product:p,qty:pdQty_n,flavor};
   updateCart(); renderGrid(); updateWishPanel();
   const actEl=document.getElementById('pdActions');
-  actEl.innerHTML=`<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${cart[p.id].qty})</button>
+  actEl.innerHTML=`<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${cart[ckey].qty})</button>
     <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
-  toast(`✅ ${p.name} ×${pdQty_n} agregado`);
+  toast(`✅ ${p.name}${flavor?' ('+flavor+')':''} ×${pdQty_n} agregado`);
 }
 function toggleWishPD(){
   const p=pdProd; if(!p) return;
@@ -1013,54 +1184,56 @@ function closeLb(){document.getElementById('lb').classList.remove('open');}
 document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb')||e.target===document.getElementById('lbBody'))closeLb();});
 
 /* CARRITO */
-function updateQty(id,d){
-  if(!cart[id])return;
-  cart[id].qty+=d;
-  if(cart[id].qty<=0)delete cart[id];
+function updateQty(key,d){
+  if(!cart[key])return;
+  cart[key].qty+=d;
+  if(cart[key].qty<=0)delete cart[key];
   updateCart();renderGrid();updateWishPanel();
 }
-function delCartItem(id){delete cart[id];updateCart();renderGrid();updateWishPanel();}
+function delCartItem(key){delete cart[key];updateCart();renderGrid();updateWishPanel();}
 function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
   document.getElementById('cartOverlay').classList.toggle('open');
 }
 function updateCart(){
-  const items=Object.values(cart);
+  const items=Object.entries(cart).map(([key,val])=>({key,...val}));
   const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
   const count=items.reduce((s,i)=>s+i.qty,0);
-  const shipping=total>=50?0:5;
   document.getElementById('cartCount').textContent=count;
   if(!items.length){
     document.getElementById('cartItemsList').innerHTML=`<div class="cart-empty"><div class="big">🛒</div><p>Tu carrito está vacío</p></div>`;
     document.getElementById('cartSummary').innerHTML=`<div class="csummary-total"><span>Total</span><span>${fmt(0)}</span></div>`;
     return;
   }
-  document.getElementById('cartItemsList').innerHTML=items.map(({product:p,qty})=>`
+  document.getElementById('cartItemsList').innerHTML=items.map(({key,product:p,qty,flavor})=>{
+    const citemImg = flavor ? ((p.flavors.find(f=>f.name===flavor)||{}).img || p.img) : p.img;
+    return `
     <div class="citem">
-      <div class="citem-img">${isUrl(p.img)?`<img src="${p.img}" alt="${p.name}">`:p.img||'📦'}</div>
+      <div class="citem-img">${isUrl(citemImg)?`<img src="${citemImg}" alt="${p.name}">`:citemImg||'📦'}</div>
       <div class="citem-info">
-        <div class="citem-name">${p.name}</div>
+        <div class="citem-name">${p.name}${flavor?` <span style="color:var(--blue);font-weight:700">· ${flavor}</span>`:''}</div>
         <div class="citem-cat">${catNames[p.cat]}</div>
         <div class="citem-price">${fmt(p.price*qty)}</div>
         <div class="citem-controls">
-          <button class="cqty-b" onclick="updateQty('${p.id}',-1)">−</button>
+          <button class="cqty-b" onclick="updateQty('${key}',-1)">−</button>
           <span class="cqty-n">${qty}</span>
-          <button class="cqty-b" onclick="updateQty('${p.id}',1)">+</button>
-          <button class="cdel-b" onclick="delCartItem('${p.id}')">🗑</button>
+          <button class="cqty-b" onclick="updateQty('${key}',1)">+</button>
+          <button class="cdel-b" onclick="delCartItem('${key}')">🗑</button>
         </div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
   document.getElementById('cartSummary').innerHTML=`
     <div class="csummary-row"><span>Subtotal</span><span>${fmt(total)}</span></div>
-    <div class="csummary-row"><span>Envío</span><span>${shipping===0?'<span style="color:var(--green);font-weight:700">GRATIS</span>':fmt(shipping)}</span></div>
-    <div class="csummary-total"><span>Total</span><span>${fmt(total+shipping)}</span></div>`;
+    <div class="csummary-row"><span>Envío</span><span style="font-style:italic;color:var(--text2)">Coordinar más adelante</span></div>
+    <div class="csummary-total"><span>Total</span><span>${fmt(total)}</span></div>`;
 }
 function shareCart(){
   const items=Object.values(cart);
   if(!items.length){toast('⚠️ El carrito está vacío');return;}
   const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
   const msg=`🛒 *MI CARRITO — MERCADUK💚*\n━━━━━━━━━━━━━━━━\n`+
-    items.map(({product:p,qty})=>`• ${p.name}\n  ×${qty} — ${fmt(p.price*qty)}`).join('\n')+
+    items.map(({product:p,qty,flavor})=>`• ${p.name}${flavor?' ('+flavor+')':''}\n  ×${qty} — ${fmt(p.price*qty)}`).join('\n')+
     `\n━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total)}*\n\n¡Mira lo que encontré! 😍`;
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
   toast('📤 Compartiendo en WhatsApp...');
@@ -1106,9 +1279,9 @@ function openOrder(){
   if(!Object.keys(cart).length){toast('⚠️ El carrito está vacío');return;}
   const items=Object.values(cart);
   const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
-  const shipping=total>=50?0:5;
-  document.getElementById('orderItems').innerHTML=items.map(({product:p,qty})=>
-    `<div class="order-item-row"><span class="order-item-name">${p.name} ×${qty}</span><span>${fmt(p.price*qty)}</span></div>`).join('')+
+  const shipping=total>=50?0:0
+  document.getElementById('orderItems').innerHTML=items.map(({product:p,qty,flavor})=>
+    `<div class="order-item-row"><span class="order-item-name">${p.name}${flavor?' ('+flavor+')':''} ×${qty}</span><span>${fmt(p.price*qty)}</span></div>`).join('')+
     `<div class="order-item-row" style="color:var(--text2)"><span>Envío</span><span>${shipping===0?'GRATIS':fmt(shipping)}</span></div>`;
   document.getElementById('orderTotal').textContent=fmt(total+shipping);
   ['fName','fPhone','fAddr','fNote'].forEach(id=>{document.getElementById(id).value='';document.getElementById(id).classList.remove('err');});
@@ -1125,18 +1298,27 @@ function sendOrder(){
   const time=document.getElementById('fTime').value;
   const note=document.getElementById('fNote').value.trim();
   let ok=true;
+    const zone=document.getElementById('fZone').value;
+  if(!zone){
+    document.getElementById('fZone').classList.add('err');
+    document.getElementById('fZoneErr').classList.add('show');
+    toast('⚠️ Selecciona tu zona de entrega'); return;
+  }
+  document.getElementById('fZone').classList.remove('err');
+  document.getElementById('fZoneErr').classList.remove('show');
+  const shipping = zone==='gratis' ? 0 : 3.00;
+  const zonaTexto = document.getElementById('fZone').options[document.getElementById('fZone').selectedIndex].text;
   const chk=(v,f,e)=>{if(!v){document.getElementById(f).classList.add('err');document.getElementById(e).classList.add('show');ok=false;}else{document.getElementById(f).classList.remove('err');document.getElementById(e).classList.remove('show');}};
   chk(name,'fName','fNameErr');chk(phone,'fPhone','fPhoneErr');chk(addr,'fAddr','fAddrErr');
   if(!ok){toast('⚠️ Completa los campos obligatorios');return;}
   const items=Object.values(cart);
   const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
-  const shipping=total>=50?0:5;
   const msg=`🛒 *NUEVO PEDIDO — MERCADUK💚*\n━━━━━━━━━━━━━━━━\n`+
     `👤 *Nombre:* ${name}\n📞 *Tel:* ${phone}\n🏠 *Dir:* ${addr}\n`+
     (time?`🕐 *Horario:* ${time}\n`:'')+(note?`📝 *Nota:* ${note}\n`:'')+
     `━━━━━━━━━━━━━━━━\n`+
-    items.map(({product:p,qty})=>`• ${p.name} ×${qty} — ${fmt(p.price*qty)}`).join('\n')+
-    `\n📦 Envío: ${shipping===0?'GRATIS':fmt(shipping)}`+
+    items.map(({product:p,qty,flavor})=>`• ${p.name}${flavor?' ('+flavor+')':''} ×${qty} — ${fmt(p.price*qty)}`).join('\n')+
+    `\n📍*Zona*${zonaTexto}\n📦 Envío: ${shipping===0?'GRATIS':fmt(shipping)}`+
     `\n━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total+shipping)}*\n`+
     `📅 ${new Date().toLocaleString('es-CU')}\n\n¡Hola! Quiero confirmar este pedido 😊`;
   window.open(`https://wa.me/5355562204?text=${encodeURIComponent(msg)}`,'_blank');
@@ -1224,7 +1406,23 @@ document.addEventListener('keydown',e=>{
     else if(document.getElementById('orderOverlay').classList.contains('open'))closeOrder();
   }
 });
-
+function updateZona(){
+  const zone = document.getElementById('fZone').value;
+  const info = document.getElementById('fZoneInfo');
+  if(zone === 'gratis'){
+    info.style.display = 'block';
+    info.style.background = 'var(--green-bg)';
+    info.style.color = 'var(--green)';
+    info.textContent = '✅ ¡Envío gratis dentro de Cueto!';
+  } else if(zone === 'cobro'){
+    info.style.display = 'block';
+    info.style.background = 'var(--blue-light)';
+    info.style.color = 'var(--blue)';
+    info.textContent = '🚗 Costo de envío: $3.00 USD';
+  } else {
+    info.style.display = 'none';
+  }
+}
 /* INIT */
 initTheme();buildHeroDots();resetHeroTimer();updateCart();updateWishPanel();renderGrid();
 </script>
