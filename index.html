@@ -595,10 +595,10 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
   <select id="fZone" onchange="updateZona()">
     <option value="">-- Selecciona tu zona --</option>
     <option value="gratis">📍 Cueto — Envío GRATIS</option>
-    <option value="cobro">🚗 Mayarí — $15.00 USD</option>
-    <option value="cobro">🚗 Marcané — $7.00 USD</option>
-    <option value="cobro">🚗 Birán — $8.00 USD</option>
-    <option value="cobro">🚗 Guaro — $7.00 USD</option>
+    <option value="cobro">🚗 Mayarí — $17.00 USD</option>
+    <option value="cobro">🚗 Marcané — $8.00 USD</option>
+    <option value="cobro">🚗 Birán — $10.00 USD</option>
+    <option value="cobro">🚗 Guaro — $8.00 USD</option>
     <option value="cobro">🚗 Barajagua-Mejia — $5.00 USD</option>
 
   </select>
@@ -701,7 +701,7 @@ const PRODUCTS = [
     cat:'alimentos', price:4.50, old:null,
     rating:4.9, reviews:387, badge:'sale', disc:'',
     freeShip:true,
-    stock: 50,           // ← AGOTADO: sale en la tienda con sello
+    stock: 0,           // ← AGOTADO: sale en la tienda con sello
     visible: true,
     img:'images/azucar.jpg',
     desc:'Azúcar blanca refinada, granulado fino. Ideal para repostería y bebidas.'
@@ -738,7 +738,7 @@ const PRODUCTS = [
   },
   {
     id:'a6', name:'Huevos de Exportación x30',
-    cat:'alimentos', price:8, old:null,
+    cat:'alimentos', price:7, old:null,
     rating:4.8, reviews:90, badge:'hot', disc:'',
     freeShip:true,
     stock: 34,
@@ -761,7 +761,7 @@ const PRODUCTS = [
     cat:'alimentos', price:1, old:null,
     rating:4.8, reviews:61, badge:'hot', disc:'',
     freeShip:true,
-    stock: 35,
+    stock: 0,
     visible: true,
     img:'images/spagueti.jpg',
     desc:'Spaghetti Italiano , pasta de gran calidad'
@@ -796,7 +796,26 @@ const PRODUCTS = [
     img:'images/pictubo.jpg',
     desc:'Picadillo mixto. Calidad premium.'
   },
-
+ {
+    id:'a12', name:'Pasta de tomate',
+    cat:'alimentos', price:1.50, old:null,
+    rating:4.8, reviews:201, badge:'hot', disc:'',
+    freeShip:true,
+    stock: 20,
+    visible: true,
+    img:'images/pure.jpg',
+    desc:'Pasta de tomate 100% natural 400g.'
+  },
+  {
+    id:'a13', name:'Arroz Rozcato 1kg',
+    cat:'alimentos', price:1.50, old:null,
+    rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true,
+    stock: 100,
+    visible: true,
+    img:'images/ArrozRo.jpg',
+    desc:'Arroz blanco de grano extra largo . Tipo 1, calidad Garantizada.'
+  },
   // ── ASEO ──
   {
     id:'as1', name:'Detergente Defa 500g',
