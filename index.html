@@ -691,7 +691,7 @@ const PRODUCTS = [
   {
     id:'a1', name:'Frijoles Negros bolsa 5lb', cat:'alimentos', price:3.50, old:null,rating:4.7, reviews:223, badge:'hot', disc:'',
     freeShip:true,
-    stock: 15,          // ← Cambia a 0 cuando se agote
+    stock: 0,          // ← Cambia a 0 cuando se agote
     visible: true,      // ← false para ocultar sin borrar
     img:'images/frijolesn.jpg',
     desc:'Frijoles Negros brasileños, cremosidad 100%. Ideal para sopas y potajes.'
@@ -701,7 +701,7 @@ const PRODUCTS = [
     cat:'alimentos', price:4.50, old:null,
     rating:4.9, reviews:387, badge:'sale', disc:'',
     freeShip:true,
-    stock: 0,           // ← AGOTADO: sale en la tienda con sello
+    stock: 30,           // ← AGOTADO: sale en la tienda con sello
     visible: true,
     img:'images/azucar.jpg',
     desc:'Azúcar blanca refinada, granulado fino. Ideal para repostería y bebidas.'
@@ -781,7 +781,7 @@ const PRODUCTS = [
     cat:'alimentos', price:13, old:null,
     rating:4.8, reviews:201, badge:'hot', disc:'',
     freeShip:true,
-    stock: 0,
+    stock: 20,
     visible: true,
     img:'images/cadera.jpg',
     desc:'Muslos con contramuslo de pollo,. Calidad premium.'
@@ -815,6 +815,16 @@ const PRODUCTS = [
     visible: true,
     img:'images/ArrozRo.jpg',
     desc:'Arroz blanco de grano extra largo . Tipo 1, calidad Garantizada.'
+  },
+  {
+    id:'a14', name:'Leche Condensada ',
+    cat:'alimentos', price: 2, old:null,
+    rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true,
+    stock: 100,
+    visible: true,
+    img:'images/lecheC.jpg',
+    desc:'Leche condensada Azucarada ideal para tus dulces.'
   },
   // ── ASEO ──
   {
