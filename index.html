@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
 <head>
+  <meta name="description" content="Mercaduko — tu mercado online en Cuba(Holguin). Alimentos, aseo y bebidas,Una web diseñada para que tu que estas fuera del pais ayudes a los tuyos con las compras,Rapidez y seguridad.">
 <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -443,6 +444,8 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
   <button class="cattab" onclick="setCat('alimentos',this)"><span class="cattab-icon">🍎</span>Alimentos</button>
   <button class="cattab" onclick="setCat('aseo',this)"><span class="cattab-icon">🧴</span>Aseo</button>
   <button class="cattab" onclick="setCat('Bebidas',this)"><span class="cattab-icon">🧃</span>Bebidas</button>
+  <button class="cattab" onclick="setCat('Confituras',this)"><span class="cattab-icon">🍫</span>Confituras</button>
+
 
 </div>
 
@@ -498,6 +501,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
     <div class="cat-pill" onclick="setCatDirect('alimentos')"><div class="cat-pill-icon">🍎</div><div class="cat-pill-name">Alimentos</div></div>
     <div class="cat-pill" onclick="setCatDirect('aseo')"><div class="cat-pill-icon">🧴</div><div class="cat-pill-name">Aseo</div></div>
     <div class="cat-pill" onclick="setCatDirect('Bebidas')"><div class="cat-pill-icon">🧃</div><div class="cat-pill-name">Bebidas</div></div>
+    <div class="cat-pill" onclick="setCatDirect('confituras')"><div class="cat-pill-icon">🍫</div><div class="cat-pill-name">Confituras</div></div>
 
   </div>
 </div>
@@ -695,7 +699,7 @@ const PRODUCTS = [
   {
     id:'a1', name:'Frijoles Negros bolsa 5lb', cat:'alimentos', price:3.50, old:null,rating:4.7, reviews:223, badge:'hot', disc:'',
     freeShip:true,
-    stock: 0,          // ← Cambia a 0 cuando se agote
+    stock: 50,          // ← Cambia a 0 cuando se agote
     visible: true,      // ← false para ocultar sin borrar
     img:'images/frijolesn.jpg',
     desc:'Frijoles Negros brasileños, cremosidad 100%. Ideal para sopas y potajes.'
@@ -725,7 +729,7 @@ const PRODUCTS = [
     cat:'alimentos', price:13, old:null,
     rating:4.8, reviews:201, badge:'hot', disc:'',
     freeShip:true,
-    stock: 0,
+    stock: 50,
     visible: true,
     img:'images/pollo.jpg',
     desc:'Muslos de pollo joven paquetes de,. Calidad premium.'
@@ -775,7 +779,7 @@ const PRODUCTS = [
     cat:'alimentos', price:1, old:null,
     rating:4.8, reviews:57, badge:'hot', disc:'',
     freeShip:true,
-    stock: 0,
+    stock: 60,
     visible: true,
     img:'images/jamonada.jpg',
     desc:'Aceite de soja sublime calidad extrema'
@@ -830,6 +834,16 @@ const PRODUCTS = [
     img:'images/lecheC.jpg',
     desc:'Leche condensada Azucarada ideal para tus dulces.'
   },
+  {
+    id:'a15', name:'Salchicha ',
+    cat:'alimentos', price: 2, old:null,
+    rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true,
+    stock: 100,
+    visible: true,
+    img:'images/salchicha.jpg',
+    desc:'Paquete de salchichas de pollo 10u .'
+  },
   // ── ASEO ──
   {
     id:'as1', name:'Detergente Defa 500g',
@@ -844,7 +858,7 @@ const PRODUCTS = [
 
    // ── BEBIDAS ──
   {
-    id:'be1', name:'Cajas de Refresco de lata ',
+    id:'be1', name:'Cajas de Refresco de lata 24u',
     cat:'Bebidas', price:23, old:null,
     rating:4.7, reviews:312, badge:'sale', disc:'',
     freeShip:true,
@@ -858,6 +872,18 @@ const PRODUCTS = [
       {name:'Cola',     img:'images/refreC.jpg'},
       {name:'Naranja',  img:'images/refreN.jpg'},
       ]
+  },
+
+  // ── CONFITURAS ──
+   {
+    id:'cf1', name:'Crema de Cacao con ldche',
+    cat:'confituras', price:1.50, old:null,
+    rating:4.7, reviews:312, badge:'sale', disc:'-21%',
+    freeShip:true,
+    stock: 60,
+    visible: true,
+    img:'images/nutella.jpg',
+    desc:'Detergente Defa 500g, fragancia suave y limpieza profunda. Para ropa de color y blanca.'
   },
 ];
 
