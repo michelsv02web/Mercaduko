@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
 <head>
-  <meta name="description" content="Mercaduko — tu mercado online en Cuba(Holguin). Alimentos, aseo y bebidas,Una web diseñada para que tu que estas fuera del pais ayudes a los tuyos con las compras,Rapidez y seguridad.">
+<meta charset="UTF-8">
+<meta name="description" content="Mercaduko — tu mercado online en Cuba (Holguín). Alimentos, aseo y bebidas. Una web diseñada para que tú, que estás fuera del país, ayudes a los tuyos con las compras. Rapidez y seguridad.">
 <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link rel="manifest" href="images/site.webmanifest">
 <meta name="theme-color" content="#1b8cf0">
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mercaduko — Todo en un lugar</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -98,66 +98,31 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 
 .filters-bar{padding:.5rem 1.5rem;max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .results-count{font-size:12px;color:var(--gray);font-weight:500;}
-/* filtro agotados */
 .filter-toggle{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;user-select:none;margin-left:auto;}
 .filter-toggle input{accent-color:var(--blue);width:14px;height:14px;cursor:pointer;}
 
-.shop{padding:.5rem 1.5rem 5rem;max-width:1400px;margin:0 auto;}
+.shop{padding:.5rem 1.5rem 5rem;max-width:1400px;margin:0 auto;scroll-margin-top:120px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
 
-/* ══════════════════════════════════
-   PRODUCT CARD
-══════════════════════════════════ */
+/* PRODUCT CARD */
 .pcard{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;display:flex;flex-direction:column;}
 .pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-
-/* AGOTADO: atenúa la card entera y bloquea hover */
 .pcard.out-of-stock{opacity:.65;filter:grayscale(.4);}
-.pcard.out-of-stock:hover{transform:none;box-shadow:none;cursor:not-allowed;}
+.pcard.out-of-stock:hover{transform:none;box-shadow:none;}
 
 .pimg-wrap{width:100%;aspect-ratio:1/1;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:10px 10px 0 0;position:relative;}
 .pimg-wrap img{width:100%;height:100%;object-fit:cover;}
 .pimg-emoji{font-size:4.5rem;}
 
-/* Badge genérico */
-.pbadge{position:absolute;top:8px;left:8px;font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:4px;}
+.pbadge{position:absolute;top:8px;left:8px;font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:4px;z-index:3;}
 .pbadge-sale{background:var(--red);color:#fff;}
 .pbadge-new{background:var(--blue);color:#fff;}
 .pbadge-hot{background:var(--orange);color:#fff;}
 .pbadge-free{background:var(--green);color:#fff;}
+.pbadge-agotado{background:rgba(0,0,0,.72);color:#fff;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:4px;border:1.5px solid rgba(255,255,255,.25);}
+.out-stamp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-18deg);background:rgba(220,38,38,.88);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:4px;padding:6px 16px;border-radius:6px;border:2.5px solid rgba(255,255,255,.55);pointer-events:none;white-space:nowrap;z-index:4;box-shadow:0 4px 16px rgba(0,0,0,.3);}
 
-/* Badge AGOTADO — superpuesto sobre la imagen */
-.pbadge-agotado{
-  background:rgba(0,0,0,.72);
-  color:#fff;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  padding:4px 10px;
-  border-radius:4px;
-  border:1.5px solid rgba(255,255,255,.25);
-}
-/* Sello central encima de la imagen */
-.out-stamp{
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%) rotate(-18deg);
-  background:rgba(220,38,38,.88);
-  color:#fff;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.4rem;
-  letter-spacing:4px;
-  padding:6px 16px;
-  border-radius:6px;
-  border:2.5px solid rgba(255,255,255,.55);
-  pointer-events:none;
-  white-space:nowrap;
-  z-index:4;
-  box-shadow:0 4px 16px rgba(0,0,0,.3);
-}
-
-.pwish-btn{position:absolute;top:8px;right:8px;background:var(--surface);border:1.5px solid var(--border);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+.pwish-btn{position:absolute;top:8px;right:8px;background:var(--surface);border:1.5px solid var(--border);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.1);z-index:3;}
 .pwish-btn:hover{border-color:var(--red);}
 
 .pinfo{padding:11px 12px 13px;flex:1;display:flex;flex-direction:column;}
@@ -180,22 +145,17 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 .padd-btn{flex:1;padding:8px 6px;background:var(--blue);color:#fff;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;border-radius:6px;transition:background .2s;text-align:center;}
 .padd-btn:hover{background:var(--blue2);}
 .padd-btn.added{background:var(--green);}
+.padd-btn-out{flex:1;padding:8px 6px;background:var(--border);color:var(--gray);border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;border-radius:6px;cursor:not-allowed;text-align:center;}
 
-/* Botón agotado en la card */
-.padd-btn-out{
-  flex:1;padding:8px 6px;
-  background:var(--border);color:var(--gray);
-  border:none;font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:11px;font-weight:700;
-  border-radius:6px;cursor:not-allowed;text-align:center;
-}
-
-/* ══ SELECTOR DE SABORES ══ */
+/* SELECTORES (sabor / marca / cantidad) */
 .flavor-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 8px;}
 .flavor-label{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gray);margin-right:2px;}
-.flavor-chip{border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:20px;cursor:pointer;transition:all .15s;}
+.flavor-chip{border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:20px;cursor:pointer;transition:all .15s;font-family:'Plus Jakarta Sans',sans-serif;}
 .flavor-chip:hover{border-color:var(--blue);color:var(--blue);}
 .flavor-chip.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+.flavor-chip.out{opacity:.45;text-decoration:line-through;cursor:not-allowed;background:var(--bg);}
+.flavor-chip.out:hover{border-color:var(--border);color:var(--text2);}
+.flavor-chip.out.active{background:var(--gray);border-color:var(--gray);color:#fff;text-decoration:line-through;}
 
 /* MODAL */
 .pd-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3500;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
@@ -208,21 +168,11 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 @media(min-width:640px){.pd-handle{display:none;}}
 .pd-close{position:absolute;top:12px;right:12px;background:var(--bg);border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1rem;z-index:10;display:flex;align-items:center;justify-content:center;color:var(--text);transition:background .2s,transform .2s;}
 .pd-close:hover{background:var(--red);color:#fff;transform:rotate(90deg);}
-.pd-img-side{flex-shrink:0;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;width:100%;height:240px;position:relative;}
+.pd-img-side{flex-shrink:0;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;width:100%;height:240px;position:relative;cursor:zoom-in;}
 @media(min-width:640px){.pd-img-side{width:280px;height:auto;min-height:400px;}}
 .pd-img-side img{width:100%;height:100%;object-fit:cover;}
 .pd-img-emoji{font-size:8rem;}
-
-/* Sello en el modal */
-.pd-out-stamp{
-  position:absolute;bottom:14px;left:50%;
-  transform:translateX(-50%);
-  background:rgba(220,38,38,.9);color:#fff;
-  font-family:'Bebas Neue',sans-serif;font-size:1.1rem;
-  letter-spacing:4px;padding:6px 20px;border-radius:6px;
-  border:2px solid rgba(255,255,255,.4);
-  pointer-events:none;white-space:nowrap;z-index:4;
-}
+.pd-out-stamp{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(220,38,38,.9);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:4px;padding:6px 20px;border-radius:6px;border:2px solid rgba(255,255,255,.4);pointer-events:none;white-space:nowrap;z-index:4;}
 
 .pd-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:1.4rem;display:flex;flex-direction:column;gap:.9rem;}
 .pd-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
@@ -236,18 +186,9 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 .pd-disc{font-size:12px;font-weight:800;color:var(--red);background:var(--red-bg);padding:3px 8px;border-radius:4px;}
 .pd-desc{font-size:13px;color:var(--text2);line-height:1.75;border-left:3px solid var(--border);padding-left:10px;}
 .pd-ship{font-size:12px;color:var(--green);font-weight:700;display:flex;align-items:center;gap:5px;background:var(--green-bg);padding:8px 12px;border-radius:8px;}
-
-/* Selector de sabores en el modal */
 .pd-flavor-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
 .pd-flavor-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-right:2px;}
-
-/* Aviso agotado en modal */
-.pd-out-notice{
-  background:var(--red-bg);border:1.5px solid var(--red);
-  border-radius:10px;padding:12px 16px;
-  font-size:13px;font-weight:700;color:var(--red);
-  display:flex;align-items:center;gap:8px;
-}
+.pd-out-notice{background:var(--red-bg);border:1.5px solid var(--red);border-radius:10px;padding:12px 16px;font-size:13px;font-weight:700;color:var(--red);display:flex;align-items:center;gap:8px;}
 
 .pd-qty-row{display:flex;align-items:center;gap:12px;}
 .pd-qty-label{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:1px;text-transform:uppercase;}
@@ -335,7 +276,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 .fgroup label{display:block;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;color:var(--gray);}
 .fgroup input,.fgroup textarea,.fgroup select{width:100%;padding:10px 12px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;outline:none;resize:none;border-radius:8px;transition:border-color .2s;}
 .fgroup input:focus,.fgroup textarea:focus,.fgroup select:focus{border-color:var(--blue);}
-.fgroup input.err,.fgroup textarea.err{border-color:var(--red);}
+.fgroup input.err,.fgroup textarea.err,.fgroup select.err{border-color:var(--red);}
 .ferr{font-size:11px;color:var(--red);margin-top:3px;display:none;}
 .ferr.show{display:block;}
 .wa-send-btn{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:.5rem;transition:opacity .2s;}
@@ -368,7 +309,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 .review-form{background:var(--bg);border-radius:10px;padding:12px;}
 .review-form-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
 .star-picker{display:flex;gap:4px;margin-bottom:8px;}
-.star-pick-btn{background:none;border:none;font-size:22px;cursor:pointer;opacity:.3;transition:opacity .15s,transform .15s;line-height:1;}
+.star-pick-btn{background:none;border:none;font-size:22px;cursor:pointer;opacity:.3;transition:opacity .15s,transform .15s;line-height:1;color:#f59e0b;}
 .star-pick-btn:hover,.star-pick-btn.active{opacity:1;transform:scale(1.2);}
 .review-name-input,.review-text-input{width:100%;padding:8px 10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:12.5px;outline:none;border-radius:7px;transition:border-color .2s;margin-bottom:7px;resize:none;}
 .review-name-input:focus,.review-text-input:focus{border-color:var(--blue);}
@@ -420,7 +361,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 </head>
 <body>
 
-<div class="topbar">🚚 Envío gratis en los perimetros de la ciudad <span> </span> — Entrega en 24 horas</div>
+<div class="topbar">🚚 Envío gratis en los perímetros de la ciudad <span> </span> — Entrega en 24 horas</div>
 
 <nav>
   <a class="nav-logo" href="#">MERCADUK<span class="heart-o">💚</span></a>
@@ -440,13 +381,11 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 </nav>
 
 <div class="catbar" id="catbar">
-  <button class="cattab active" onclick="setCat('all',this)"><span class="cattab-icon">🏪</span>Todo</button>
-  <button class="cattab" onclick="setCat('alimentos',this)"><span class="cattab-icon">🍎</span>Alimentos</button>
-  <button class="cattab" onclick="setCat('aseo',this)"><span class="cattab-icon">🧴</span>Aseo</button>
-  <button class="cattab" onclick="setCat('Bebidas',this)"><span class="cattab-icon">🧃</span>Bebidas</button>
-  <button class="cattab" onclick="setCat('confituras',this)"><span class="cattab-icon">🍫</span>Confituras</button>
-
-
+  <button class="cattab active" data-cat="all" onclick="setCatDirect('all')"><span class="cattab-icon">🏪</span>Todo</button>
+  <button class="cattab" data-cat="alimentos" onclick="setCatDirect('alimentos')"><span class="cattab-icon">🍎</span>Alimentos</button>
+  <button class="cattab" data-cat="aseo" onclick="setCatDirect('aseo')"><span class="cattab-icon">🧴</span>Aseo</button>
+  <button class="cattab" data-cat="Bebidas" onclick="setCatDirect('Bebidas')"><span class="cattab-icon">🧃</span>Bebidas</button>
+  <button class="cattab" data-cat="confituras" onclick="setCatDirect('confituras')"><span class="cattab-icon">🍫</span>Confituras</button>
 </div>
 
 <div class="hero-wrap">
@@ -498,11 +437,10 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 
 <div class="cats-grid-section">
   <div class="cats-grid">
-    <div class="cat-pill" onclick="setCatDirect('alimentos')"><div class="cat-pill-icon">🍎</div><div class="cat-pill-name">Alimentos</div></div>
-    <div class="cat-pill" onclick="setCatDirect('aseo')"><div class="cat-pill-icon">🧴</div><div class="cat-pill-name">Aseo</div></div>
-    <div class="cat-pill" onclick="setCatDirect('Bebidas')"><div class="cat-pill-icon">🧃</div><div class="cat-pill-name">Bebidas</div></div>
-    <div class="cat-pill" onclick="setCatDirect('confituras')"><div class="cat-pill-icon">🍫</div><div class="cat-pill-name">Confituras</div></div>
-
+    <div class="cat-pill" data-cat="alimentos" onclick="setCatDirect('alimentos')"><div class="cat-pill-icon">🍎</div><div class="cat-pill-name">Alimentos</div></div>
+    <div class="cat-pill" data-cat="aseo" onclick="setCatDirect('aseo')"><div class="cat-pill-icon">🧴</div><div class="cat-pill-name">Aseo</div></div>
+    <div class="cat-pill" data-cat="Bebidas" onclick="setCatDirect('Bebidas')"><div class="cat-pill-icon">🧃</div><div class="cat-pill-name">Bebidas</div></div>
+    <div class="cat-pill" data-cat="confituras" onclick="setCatDirect('confituras')"><div class="cat-pill-icon">🍫</div><div class="cat-pill-name">Confituras</div></div>
   </div>
 </div>
 
@@ -514,7 +452,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
   </label>
 </div>
 
-<div class="shop"><div class="grid" id="grid"></div></div>
+<div class="shop" id="shop"><div class="grid" id="grid"></div></div>
 
 <!-- MODAL PRODUCTO -->
 <div class="pd-overlay" id="pdOverlay">
@@ -593,26 +531,27 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
     <div class="order-summary">
       <div class="order-summary-title">📦 Resumen del pedido</div>
       <div id="orderItems"></div>
+      <div class="order-item-row" style="color:var(--text2)"><span>Envío</span><span id="orderShip">Selecciona tu zona</span></div>
       <div class="order-total-row"><span>Total</span><span id="orderTotal">$0</span></div>
     </div>
     <div class="fgroup"><label>👤 Nombre completo *</label><input type="text" id="fName" placeholder="María García" maxlength="80"><div class="ferr" id="fNameErr">⚠ Ingresa tu nombre</div></div>
     <div class="fgroup"><label>📞 Teléfono / WhatsApp *</label><input type="tel" id="fPhone" placeholder="+53 5 555 5555" maxlength="20"><div class="ferr" id="fPhoneErr">⚠ Ingresa tu teléfono</div></div>
     <div class="fgroup"><label>🏠 Dirección de entrega *</label><textarea id="fAddr" rows="3" placeholder="Calle, número, municipio, provincia..."></textarea><div class="ferr" id="fAddrErr">⚠ Ingresa tu dirección</div></div>
-   <div class="fgroup">
-  <label>📍 Zona de entrega *</label>
-  <select id="fZone" onchange="updateZona()">
-    <option value="">-- Selecciona tu zona --</option>
-    <option value="gratis">📍 Cueto — Envío GRATIS</option>
-    <option value="cobro">🚗 Mayarí — $17.00 USD</option>
-    <option value="cobro">🚗 Marcané — $8.00 USD</option>
-    <option value="cobro">🚗 Birán — $10.00 USD</option>
-    <option value="cobro">🚗 Guaro — $8.00 USD</option>
-    <option value="cobro">🚗 Barajagua-Mejia — $5.00 USD</option>
-
-  </select>
-  <div class="ferr" id="fZoneErr">⚠ Selecciona tu zona</div>
-  <div id="fZoneInfo" style="display:none;margin-top:7px;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;"></div>
-</div>
+    <div class="fgroup">
+      <label>📍 Zona de entrega *</label>
+      <!-- El value de cada opción es el costo de envío en USD (0 = gratis) -->
+      <select id="fZone" onchange="updateZona()">
+        <option value="">-- Selecciona tu zona --</option>
+        <option value="0">📍 Cueto — Envío GRATIS</option>
+        <option value="17">🚗 Mayarí — $17.00 USD</option>
+        <option value="8">🚗 Marcané — $8.00 USD</option>
+        <option value="10">🚗 Birán — $10.00 USD</option>
+        <option value="8">🚗 Guaro — $8.00 USD</option>
+        <option value="5">🚗 Barajagua-Mejía — $5.00 USD</option>
+      </select>
+      <div class="ferr" id="fZoneErr">⚠ Selecciona tu zona</div>
+      <div id="fZoneInfo" style="display:none;margin-top:7px;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;"></div>
+    </div>
     <div class="fgroup"><label>🕐 Horario preferido</label><select id="fTime"><option value="">Cualquier horario</option><option value="Mañana (8am-12pm)">Mañana (8am - 12pm)</option><option value="Tarde (12pm-6pm)">Tarde (12pm - 6pm)</option><option value="Noche (6pm-9pm)">Noche (6pm - 9pm)</option></select></div>
     <div class="fgroup"><label>📝 Nota (opcional)</label><textarea id="fNote" rows="2" placeholder="Instrucciones especiales..."></textarea></div>
     <button class="wa-send-btn" onclick="sendOrder()">💬 Enviar Pedido por WhatsApp</button>
@@ -652,277 +591,288 @@ nav{position:sticky;top:0;z-index:1000;background:var(--blue);height:var(--nav-h
 <div class="toast" id="toast"></div>
 
 <script>
-
-/* ══════════════════════════════════════════════════════════
-   🔧 MODO MANTENIMIENTO
-   
-   true  → redirige a mantenimiento.html automáticamente
-   false → la tienda funciona normal
-══════════════════════════════════════════════════════════ */
-const MANTENIMIENTO =false;
+/* 🔧 MODO MANTENIMIENTO
+   true  → redirige a mantenimiento.html
+   false → la tienda funciona normal */
+const MANTENIMIENTO = false;
 if(MANTENIMIENTO) window.location.replace('mantenimiento.html');
 </script>
 <script>
 /* ══════════════════════════════════════════════════════════
    BASE DE DATOS DE PRODUCTOS
-   
-   ┌─ CÓMO MANEJAR STOCK ─────────────────────────────────┐
-   │                                                        │
-   │  stock: 10   → Producto disponible (número normal)    │
-   │  stock: 0    → Aparece en la tienda con sello        │
-   │                AGOTADO (no se puede comprar)          │
-   │  visible: false → Oculto completamente de la tienda   │
-   │                   pero sus datos quedan guardados     │
-   │                                                        │
-   │  Para reactivar un producto agotado:                  │
-   │    Cambia stock:0 → stock: 20  (o el número que sea) │
-   │                                                        │
-   │  Para ocultar sin borrar:                             │
-   │    Agrega  visible: false                             │
-   │  Para volver a mostrarlo:                             │
-   │    Cambia a  visible: true  o borra esa línea        │
-   │                                                        │
-   │  ┌─ SABORES (OPCIONAL) ────────────────────────────┐ │
-   │  │ Si un producto viene en varios sabores, agrega: │ │
-   │  │   flavors: [                                    │ │
-   │  │     {name:'Cola', img:'images/refreCc.jpg'},     │ │
-   │  │     {name:'Naranja', img:'images/refreNar.jpg'}  │ │
-   │  │   ]                                              │ │
-   │  │ Al elegir un sabor, la foto del producto cambia │ │
-   │  │ automáticamente tanto en la tarjeta como en el  │ │
-   │  │ detalle. Sube una foto por sabor a /images/.    │ │
-   │  └──────────────────────────────────────────────────┘ │
-   └────────────────────────────────────────────────────────┘
+
+   stock: 10      → disponible
+   stock: 0       → aparece con sello AGOTADO
+   visible:false  → oculto de la tienda (datos guardados)
+
+   flavors:[{name,img,stock?}]  → sabores o marcas (stock:0 = agotado)
+   flavorLabel:'Marca'          → cambia el texto "Sabor:" (opcional)
+   sizes:[{name,price}]         → cantidades con su propio precio
 ══════════════════════════════════════════════════════════ */
 const PRODUCTS = [
   // ── ALIMENTOS ──
   {
-    id:'a1', name:'Frijoles Negros bolsa 5lb', cat:'alimentos', price:3.50, old:null,rating:4.7, reviews:223, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 0,          // ← Cambia a 0 cuando se agote
-    visible: true,      // ← false para ocultar sin borrar
-    img:'images/frijolesn.jpg',
+    id:'a1', name:'Frijoles Negros bolsa 5lb', 
+    cat:'alimentos', price:3.50, old:null, rating:4.7, reviews:223, badge:'hot', disc:'',
+    freeShip:true, stock:0, visible:true, img:'images/frijolesn.jpg',
     desc:'Frijoles Negros brasileños, cremosidad 100%. Ideal para sopas y potajes.'
   },
-   {
-    id:'a2', name:'Azúcar Blanca bolsa de 5lb',
-    cat:'alimentos', price:4.50, old:null,
-    rating:4.9, reviews:387, badge:'sale', disc:'',
-    freeShip:true,
-    stock: 0,           // ← AGOTADO: sale en la tienda con sello
-    visible: true,
-    img:'images/azucar.jpg',
+  {
+    id:'a2', name:'Azúcar Blanca bolsa de 5lb', 
+    cat:'alimentos', price:4.50, old:null, rating:4.9, reviews:387, badge:'sale', disc:'',
+    freeShip:true, stock:30, visible:true, img:'images/azucar.jpg',
     desc:'Azúcar blanca refinada, granulado fino. Ideal para repostería y bebidas.'
   },
   {
     id:'a3', name:'Arroz El Rey del Arroz 1kg',
-    cat:'alimentos', price:1.50, old:null,
-    rating:4.6, reviews:115, badge:'new', disc:'',
-    freeShip:true,
-    stock: 0,
-    visible: true,
-    img:'images/Arroz p.jpg',
+     cat:'alimentos', price:1.50, old:null, rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true, stock:0, visible:true, img:'images/Arroz p.jpg',
     desc:'Arroz blanco de grano extra largo de Demara. Non GMO, calidad de exportación.'
   },
   {
     id:'a4', name:'Paquete de Pollo [muslo]',
-    cat:'alimentos', price:13, old:null,
-    rating:4.8, reviews:201, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 0,
-    visible: true,
-    img:'images/pollo.jpg',
-    desc:'Muslos de pollo joven paquetes de,. Calidad premium.'
+     cat:'alimentos', price:13, old:null, rating:4.8, reviews:201, badge:'hot', disc:'',
+    freeShip:true, stock:0, visible:true, img:'images/pollo.jpg',
+    desc:'Muslos de pollo joven en paquete. Calidad premium.'
   },
   {
     id:'a5', name:'Picadillo de Pollo x lb',
-    cat:'alimentos', price:1, old:null,
-    rating:4.7, reviews:98, badge:'new', disc:'',
-    freeShip:true,
-    stock: 0,           // ← AGOTADO
-    visible: true,
-    img:'images/piclb.jpg',
+     cat:'alimentos', price:1, old:null, rating:4.7, reviews:98, badge:'new', disc:'',
+    freeShip:true, stock:80, visible:true, img:'images/piclb.jpg',
     desc:'Picadillo de pollo fresco, molido al momento. Listo para cocinar.'
   },
   {
     id:'a6', name:'Huevos de Exportación x30',
-    cat:'alimentos', price:7, old:null,
-    rating:4.8, reviews:90, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 0,
-    visible: true,
-    img:'images/huevos.jpg',
+     cat:'alimentos', price:7, old:null, rating:4.8, reviews:90, badge:'hot', disc:'',
+    freeShip:true, stock:0, visible:true, img:'images/huevos.jpg',
     desc:'Cartón de 30 huevos de exportación, blancos, talla grande. Frescos.'
   },
   {
-    id:'a7', name:'Aceite de soja ',
-    cat:'alimentos', price:5, old:null,
-    rating:4.8, reviews:67, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 20,
-    visible: true,
-    img:'images/aceite.jpg',
+    id:'a7', name:'Aceite de soja', cat:'alimentos',
+     price:5, old:null, rating:4.8, reviews:67, badge:'hot', disc:'',
+    freeShip:true, stock:20, visible:true, img:'images/aceite.jpg',
     desc:'Aceite de soja sublime calidad extrema'
   },
   {
-    id:'a8', name:'Spaghetti 500g',
-    cat:'alimentos', price:1, old:null,
-    rating:4.8, reviews:61, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 0,
-    visible: true,
-    img:'images/spagueti.jpg',
-    desc:'Spaghetti Italiano , pasta de gran calidad'
+    id:'a8', name:'Spaghetti 500g', cat:'alimentos', 
+    price:1, old:null, rating:4.8, reviews:61, badge:'hot', disc:'',
+    freeShip:true, stock:0, visible:true, img:'images/spagueti.jpg',
+    desc:'Spaghetti Italiano, pasta de gran calidad'
   },
   {
-    id:'a9', name:'Jamonada por lb',
-    cat:'alimentos', price:1, old:null,
-    rating:4.8, reviews:57, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 60,
-    visible: true,
-    img:'images/jamonada.jpg',
-    desc:'Aceite de soja sublime calidad extrema'
+    id:'a9', name:'Jamonada por lb', cat:'alimentos', 
+    price:1, old:null, rating:4.8, reviews:57, badge:'hot', disc:'',
+    freeShip:true, stock:60, visible:true, img:'images/jamonada.jpg',
+    desc:'Jamonada de calidad, vendida por libra.'
   },
   {
-    id:'a10', name:'Paquete de Pollo {muslo-contramuslo}',
-    cat:'alimentos', price:13, old:null,
-    rating:4.8, reviews:201, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 0,
-    visible: true,
-    img:'images/cadera.jpg',
-    desc:'Muslos con contramuslo de pollo,. Calidad premium.'
+    id:'a10', name:'Paquete de Pollo {muslo-contramuslo}', 
+    cat:'alimentos', price:13, old:null, rating:4.8, reviews:201, badge:'hot', disc:'',
+    freeShip:true, stock:20, visible:true, img:'images/cadera.jpg',
+    desc:'Muslos con contramuslo de pollo. Calidad premium.'
   },
   {
-    id:'a11', name:'Picadillo Mixto',
-    cat:'alimentos', price:1.50, old:null,
-    rating:4.8, reviews:201, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 20,
-    visible: true,
-    img:'images/pictubo.jpg',
+    id:'a11', name:'Picadillo Mixto', cat:'alimentos', 
+    price:1.50, old:null, rating:4.8, reviews:201, badge:'hot', disc:'',
+    freeShip:true, stock:20, visible:true, img:'images/pictubo.jpg',
     desc:'Picadillo mixto. Calidad premium.'
   },
- {
-    id:'a12', name:'Pasta de tomate',
-    cat:'alimentos', price:1.50, old:null,
-    rating:4.8, reviews:201, badge:'hot', disc:'',
-    freeShip:true,
-    stock: 20,
-    visible: true,
-    img:'images/pure.jpg',
+  {
+    id:'a12', name:'Pasta de tomate', cat:'alimentos', 
+    price:1.50, old:null, rating:4.8, reviews:201, badge:'hot', disc:'',
+    freeShip:true, stock:20, visible:true, img:'images/pure.jpg',
     desc:'Pasta de tomate 100% natural 400g.'
   },
   {
-    id:'a13', name:'Arroz Rozcato 1kg',
-    cat:'alimentos', price:1.50, old:null,
-    rating:4.6, reviews:115, badge:'new', disc:'',
-    freeShip:true,
-    stock: 100,
-    visible: true,
-    img:'images/ArrozRo.jpg',
-    desc:'Arroz blanco de grano extra largo . Tipo 1, calidad Garantizada.'
+    id:'a13', name:'Arroz Rozcato 1kg', cat:'alimentos', 
+    price:1.50, old:null, rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true, stock:100, visible:true, img:'images/ArrozRo.jpg',
+    desc:'Arroz blanco de grano extra largo. Tipo 1, calidad garantizada.'
   },
   {
-    id:'a14', name:'Leche Condensada ',
-    cat:'alimentos', price: 2, old:null,
-    rating:4.6, reviews:115, badge:'new', disc:'',
-    freeShip:true,
-    stock: 100,
-    visible: true,
-    img:'images/lecheC.jpg',
-    desc:'Leche condensada Azucarada ideal para tus dulces.'
+    id:'a14', name:'Salchicha', cat:'alimentos', 
+    price:2, old:null, rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true, stock:100, visible:true, img:'images/salchicha.jpg',
+    desc:'Paquete de salchichas de pollo 10u.'
+  },
+   {
+    id:'a15', name:'Mantgequilla con sal', cat:'alimentos', 
+    price:2, old:null, rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true, stock:100, visible:true, img:'images/mantequilla.png',
+    desc:'Margariña con sal 250g,ideal para las meriendas.'
   },
   {
-    id:'a15', name:'Salchicha ',
-    cat:'alimentos', price: 2, old:null,
-    rating:4.6, reviews:115, badge:'new', disc:'',
-    freeShip:true,
-    stock: 100,
-    visible: true,
-    img:'images/salchicha.jpg',
-    desc:'Paquete de salchichas de pollo 10u .'
+    id:'a16', name:'Sal Fina', cat:'alimentos', 
+    price:0.50,old:null, rating:4.6, reviews:115, badge:'new', disc:'',
+    freeShip:true, stock:100, visible:true, img:'images/sal.png',
+    desc:'Sal blanca ,extra fina 1.5lb.'
   },
+  
+  
   // ── ASEO ──
   {
-    id:'as1', name:'Detergente Defa 500g',
-    cat:'aseo', price:1.50, old:null,
-    rating:4.7, reviews:312, badge:'sale', disc:'-21%',
-    freeShip:true,
-    stock: 0,
-    visible: true,
-    img:'images/detergd.jpg',
+    id:'as1', name:'Detergente Defa 500g', cat:'aseo', 
+    price:1.50, 
+    old:null, rating:4.7, reviews:312, badge:'sale',freeShip:true,
+    stock:0, visible:true, img:'images/detergd.jpg',
     desc:'Detergente Defa 500g, fragancia suave y limpieza profunda. Para ropa de color y blanca.'
   },
 
-   // ── BEBIDAS ──
+  // ── BEBIDAS ──
   {
-    id:'be1', name:'Cajas de Refresco de lata 24u',
-    cat:'Bebidas', price:23, old:null,
-    rating:4.7, reviews:312, badge:'sale', disc:'',
-    freeShip:true,
-    stock: 10,
-    visible: true,
-    img:'images/refreCc.jpg',
-    desc:'Refresco Gaseado refrescante y dulce.',
-    // Sube una foto por cada sabor a la carpeta /images/ con estos nombres
-    // (o cambia la ruta por la que uses). Agrega/quita sabores libremente.
+    id:'be1', name:'Refresco de lata', cat:'Bebidas',
+     price:12, old:null, rating:4.7, reviews:312, badge:'sale', disc:'',
+    freeShip:true, stock:10, visible:true, img:'images/refreCc.jpg',
+    desc:'Refresco gaseado refrescante y dulce.',
     flavors:[
-      {name:'Cola',     img:'images/refreC.jpg'},
-      {name:'Naranja',  img:'images/refreN.jpg'},
-      ]
+      {name:'Cola',    img:'images/refreC.jpg'},
+      {name:'Naranja', img:'images/refreN.jpg'}
+    ],
+    sizes:[
+      {name:'6u' ,  price:6}, 
+      {name:'12u', price:12},   // ← PRECIOS DE EJEMPLO, pon los tuyos
+      {name:'24u', price:23}
+    ]
+  },
+  {
+    id:'be2', name:'Yogurt Probiótico 500ml', cat:'Bebidas', price:3, old:null, rating:4.7, reviews:0, badge:'new', disc:'',
+    freeShip:true, stock:20, visible:true, img:'images/yogurt_fresa.jpg',
+    desc:'Yogurt probiótico cremoso 500ml.',
+    flavors:[
+      {name:'Fresa',    img:'images/yogurtF.png',          stock:20},
+      {name:'Guanábana',img:'images/yogurt_vainilla.jpg',  stock:0},
+      {name:'Natural',  img:'images/yogurt_natural.jpg',   stock:0}
+    ]
+  },
+  {
+    id:'be3', name:'Jugo Néctar', cat:'Bebidas', price:7, old:null, rating:4.6, reviews:0, badge:'new', disc:'',
+    freeShip:true, stock:20, visible:true, img:'images/jugo_mango.jpg',
+    desc:'Jugo néctar de frutas, refrescante y disponible en varios sabores.',
+    flavors:[
+      {name:'Pera',    img:'images/jugoP.png',         stock:20},
+      {name:'Manzana', img:'images/jugo_pina.jpg',     stock:0},
+      {name:'Piña',    img:'images/jugo_naranja.jpg',  stock:0}
+    ],
+    sizes:[
+      {name:'6u',  price:7},    // ← PRECIOS DE EJEMPLO, pon los tuyos
+      {name:'12u', price:14}
+    ]
+  },
+  {
+    id:'be4', name:'Cerveza en lata', cat:'Bebidas', 
+    price:14, old:null, rating:4.7, reviews:0, badge:'new', disc:'',
+    freeShip:true, stock:20, visible:true, img:'images/cerveza.jpg',
+    desc:'Cerveza cubana en lata, bien fría. Elige tu marca y la cantidad.',
+    flavorLabel:'Marca',
+    flavors:[
+      {name:'Cristal', img:'images/cervezaCristal.jpg',stock:0},
+      {name:'Mayabe',  img:'images/cervezaM.png',stock:20},
+    ],
+    sizes:[
+      {name:'12u', price:13},  // ← PRECIOS DE EJEMPLO, pon los tuyos
+      {name:'24u', price:25}
+    ]
   },
 
   // ── CONFITURAS ──
-   {
-    id:'cf1', name:'Crema de Cacao con leche',
-    cat:'confituras', price:2, old:null,
-    rating:4.7, reviews:312, badge:'sale', disc:'-21%',
-    freeShip:true,
-    stock: 60,
-    visible: true,
-    img:'images/nutella.jpg',
-    desc:'Crema de chocolate y leche ,sabor y cremosidad.'
+  {
+    id:'cf1', name:'Crema de Cacao con leche', cat:'confituras', 
+    price:2, old:null, rating:4.7, reviews:312, badge:'', disc:'',
+    freeShip:true, stock:60, visible:true, img:'images/nutella.jpg',
+    desc:'Crema de cacao con leche, suave y cremosa. Ideal para untar.'
   },
+  {
+    id:'a14', name:'Leche Condensada', cat:'confituras', 
+    price:2, old:null, rating:4.6, reviews:115, badge:'', disc:'',
+    freeShip:true, stock:100, visible:true, img:'images/lecheC.jpg',
+    desc:'Leche condensada azucarada ideal para tus dulces.'
+  },
+ 
 ];
 
-/* ══════════════════════
-   ESTADO
-══════════════════════ */
+/* ══ ESTADO ══ */
 let currentCat = 'all';
 let searchQ    = '';
 let cart       = {};
 let wish       = new Set();
 let pdProd     = null;
 let pdQty_n    = 1;
-let selectedFlavor = {}; // { productId: 'NombreDelSabor' }
+let selectedFlavor = {};
+let selectedSize   = {};
 
-/* ── Helpers ── */
+/* ══ HELPERS ══ */
 const fmt = n => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' USD';
 const isUrl = s => s && (s.startsWith('http')||s.startsWith('/')||s.startsWith('images/'));
 const starsHtml = r => {
   const full=Math.floor(r), half=(r%1>=.5)?1:0, empty=5-full-half;
   return '★'.repeat(full)+(half?'½':'')+('☆'.repeat(empty));
 };
-const catNames = {alimentos:'Alimentos', aseo:'Aseo'};
-
-/* Determina si un producto está agotado */
+const catNames = {alimentos:'Alimentos', aseo:'Aseo', Bebidas:'Bebidas', confituras:'Confituras'};
 const isOutOfStock = p => p.stock === 0;
+const escQ = s => String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
 
-/* ══ Helpers de SABORES ══
-   Cada combinación producto+sabor es una "llave" distinta en el carrito,
-   así el cliente puede llevar, por ejemplo, Cola y Naranja al mismo tiempo. */
+/* Sabores / marcas */
 const hasFlavors = p => Array.isArray(p.flavors) && p.flavors.length>0;
-const flavorOf = p => hasFlavors(p) ? (selectedFlavor[p.id] || p.flavors[0].name) : null;
-const cartKeyOf = p => { const f=flavorOf(p); return f ? p.id+'__'+f : p.id; };
+const defaultFlavor = p => {
+  if(!hasFlavors(p)) return null;
+  const avail = p.flavors.find(fl => !(typeof fl.stock==='number' && fl.stock===0));
+  return (avail || p.flavors[0]).name;
+};
+const flavorOf = p => hasFlavors(p) ? (selectedFlavor[p.id] || defaultFlavor(p)) : null;
+const flavorLabelOf = p => p.flavorLabel || 'Sabor';
 const imgOf = p => {
   const f=flavorOf(p);
   if(f){ const fl=p.flavors.find(x=>x.name===f); if(fl && fl.img) return fl.img; }
   return p.img;
 };
+const isFlavorOut = (p, flavorName) => {
+  if(!hasFlavors(p) || !flavorName) return false;
+  const fl = p.flavors.find(x=>x.name===flavorName);
+  return !!(fl && typeof fl.stock==='number' && fl.stock===0);
+};
 
-/* TEMA */
+/* Cantidades (12u / 24u, 6u / 12u...) con precio propio */
+const hasSizes = p => Array.isArray(p.sizes) && p.sizes.length>0;
+const sizeOf  = p => hasSizes(p) ? (selectedSize[p.id] || p.sizes[0].name) : null;
+const priceOf = p => {
+  const s = sizeOf(p);
+  if(s){ const o = p.sizes.find(x=>x.name===s); if(o) return o.price; }
+  return p.price;
+};
+const cartKeyOf = p => {
+  const f=flavorOf(p), s=sizeOf(p);
+  return p.id + (f?'__'+f:'') + (s?'__'+s:'');
+};
+const itemLabel = i => i.product.name + (i.flavor?' ('+i.flavor+')':'') + (i.size?' · '+i.size:'');
+const cartTotal = () => Object.values(cart).reduce((s,i)=>s+i.price*i.qty,0);
+
+/* Chips de marca/sabor + cantidad. mode: 'card' o 'pd' (modal) */
+function optionChips(p, mode){
+  const hF = mode==='pd'?'pickFlavorPD':'pickFlavorCard';
+  const hS = mode==='pd'?'pickSizePD':'pickSizeCard';
+  const rowCls = mode==='pd'?'pd-flavor-row':'flavor-row';
+  const lblCls = mode==='pd'?'pd-flavor-label':'flavor-label';
+  const attr = mode==='card'?'onclick="event.stopPropagation()"':'';
+  let h='';
+  if(hasFlavors(p)){
+    const cur=flavorOf(p);
+    h+=`<div class="${rowCls}" ${attr}><span class="${lblCls}">${flavorLabelOf(p)}:</span>`+
+      p.flavors.map(fl=>{
+        const o=isFlavorOut(p,fl.name);
+        return `<button class="flavor-chip ${cur===fl.name?'active':''} ${o?'out':''}" ${o?'disabled':''}
+          onclick="${hF}('${p.id}','${escQ(fl.name)}')">${fl.name}${o?' (agotado)':''}</button>`;
+      }).join('')+`</div>`;
+  }
+  if(hasSizes(p)){
+    const cur=sizeOf(p);
+    h+=`<div class="${rowCls}" ${attr}><span class="${lblCls}">Cantidad:</span>`+
+      p.sizes.map(sz=>`<button class="flavor-chip ${cur===sz.name?'active':''}"
+        onclick="${hS}('${p.id}','${escQ(sz.name)}')">${sz.name}</button>`).join('')+`</div>`;
+  }
+  return h;
+}
+
+/* ══ TEMA ══ */
 function toggleTheme(){
   const h=document.documentElement;
   const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
@@ -937,7 +887,7 @@ function initTheme(){
   document.getElementById('themeBtn').textContent=t==='dark'?'🌙':'☀️';
 }
 
-/* HERO */
+/* ══ HERO ══ */
 let heroIdx=0, heroTotal=3, heroTimer;
 function buildHeroDots(){
   document.getElementById('heroDots').innerHTML=
@@ -951,55 +901,39 @@ function heroShift(d){
 }
 function resetHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(()=>heroShift(1),4500);}
 
-/* FILTROS */
-function setCat(c,btn){
-  currentCat=c;
-  document.querySelectorAll('.cattab').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
-  renderGrid();
-  document.getElementById('shop').scrollIntoView({behavior:'smooth',block:'start'});
-}
+/* ══ FILTROS ══ */
 function setCatDirect(c){
   currentCat=c;
-  const cats=['all','alimentos','aseo'];
-  document.querySelectorAll('.cattab').forEach((b,i)=>b.classList.toggle('active',cats[i]===c));
+  document.querySelectorAll('.cattab').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat===c));
   renderGrid();
-  document.getElementById('shop').scrollIntoView({behavior:'smooth',block:'start'});
+  const shop=document.getElementById('shop');
+  if(shop) shop.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function onSearch(){
   searchQ=document.getElementById('searchInput').value.toLowerCase().trim();
   renderGrid();
 }
 
-/* ══════════════════════════════════════════════════════════
-   RENDER GRID — Lógica de stock y visibilidad
-══════════════════════════════════════════════════════════ */
+/* ══ RENDER GRID ══ */
 function renderGrid(){
   const showOut = document.getElementById('showOutOfStock').checked;
 
   let list = PRODUCTS.filter(p => {
-    // Ocultar los que tienen visible:false SIEMPRE
     if(p.visible === false) return false;
-    // Filtro de categoría
     if(currentCat !== 'all' && p.cat !== currentCat) return false;
-    // Filtro de búsqueda
     if(searchQ && !p.name.toLowerCase().includes(searchQ) &&
-       !(catNames[p.cat]||'').toLowerCase().includes(searchQ)) return false;
+       !(catNames[p.cat]||'').toLowerCase().includes(searchQ) &&
+       !(hasFlavors(p) && p.flavors.some(f=>f.name.toLowerCase().includes(searchQ)))) return false;
     return true;
   });
 
-  // Separar disponibles vs agotados
   const avail = list.filter(p => !isOutOfStock(p));
   const out   = list.filter(p =>  isOutOfStock(p));
-
-  // Agotados solo se muestran si el checkbox está marcado
   const displayed = showOut ? [...avail, ...out] : avail;
 
-  const availCount = avail.length;
-  const outCount   = out.length;
-  let countLabel = `${availCount} producto${availCount!==1?'s':''}`;
-  if(outCount>0) countLabel += ` · <span style="color:var(--red);font-weight:700">${outCount} agotado${outCount!==1?'s':''}</span>`;
+  let countLabel = `${avail.length} producto${avail.length!==1?'s':''}`;
+  if(out.length>0) countLabel += ` · <span style="color:var(--red);font-weight:700">${out.length} agotado${out.length!==1?'s':''}</span>`;
   document.getElementById('resultsCount').innerHTML = countLabel;
 
   const btext={sale:'OFERTA',new:'NUEVO',hot:'🔥 TOP',free:'ENVÍO'};
@@ -1013,46 +947,33 @@ function renderGrid(){
     const dispImg = imgOf(p);
     const curFlavor = flavorOf(p);
 
-    // Badge principal (solo si NO es agotado)
     const mainBadge = (!oos && p.badge)
-      ? `<span class="pbadge pbadge-${p.badge}">${p.disc||btext[p.badge]}</span>`
-      : '';
-
-    // Sello AGOTADO central sobre la imagen
+      ? `<span class="pbadge pbadge-${p.badge}">${p.disc||btext[p.badge]}</span>` : '';
     const stampHtml = oos ? `<div class="out-stamp">AGOTADO</div>` : '';
-
-    // Badge esquina si agotado
     const oosBadge = oos
-      ? `<span class="pbadge pbadge-agotado" style="top:8px;left:8px">AGOTADO</span>`
-      : mainBadge;
+      ? `<span class="pbadge pbadge-agotado">AGOTADO</span>` : mainBadge;
 
-    // Selector de sabores (solo si el producto tiene flavors y no está agotado)
-    const flavorRow = (hasFlavors(p) && !oos)
-      ? `<div class="flavor-row" onclick="event.stopPropagation()">
-           <span class="flavor-label">Sabor:</span>
-           ${p.flavors.map(fl=>`<button class="flavor-chip ${curFlavor===fl.name?'active':''}"
-             onclick="pickFlavorCard('${p.id}','${fl.name.replace(/'/g,"\\'")}')">${fl.name}</button>`).join('')}
-         </div>`
-      : '';
+    const curFlavorOut = hasFlavors(p) && isFlavorOut(p, curFlavor);
+    const flavorRow = !oos ? optionChips(p,'card') : '';
 
-    // Botón de añadir o "Sin stock"
     const addBtn = oos
       ? `<button class="padd-btn-out" disabled>Sin stock</button>`
-      : `<button class="padd-btn ${inCart?'added':''}" id="cardBtn_${ckey}"
+      : curFlavorOut
+      ? `<button class="padd-btn-out" disabled>${flavorLabelOf(p)} agotado</button>`
+      : `<button class="padd-btn ${inCart?'added':''}"
            onclick="event.stopPropagation();addToCartFromCard('${p.id}')">
            ${inCart?`🛒 Ver Carrito (${inCart})`:'+ Agregar'}
          </button>`;
 
-    // Controles qty solo si disponible
     const qtyCtrl = oos
       ? `<div style="flex:0"></div>`
       : `<div class="qty-wrap">
-           <button class="qty-btn" onclick="cardQtyChange('${ckey}',-1)">−</button>
-           <span class="qty-num" id="cardQty_${ckey}">${inCart||1}</span>
-           <button class="qty-btn" onclick="cardQtyChange('${ckey}',1)">+</button>
+           <button class="qty-btn" onclick="cardQtyChange('${escQ(ckey)}',-1)">−</button>
+           <span class="qty-num" id="cardQty_${ckey}">${inCart||cardQtyMap[ckey]||1}</span>
+           <button class="qty-btn" onclick="cardQtyChange('${escQ(ckey)}',1)">+</button>
          </div>`;
 
-    return `<div class="pcard ${oos?'out-of-stock':''}" onclick="${oos?'openPD(\''+p.id+'\')':'openPD(\''+p.id+'\')'}">
+    return `<div class="pcard ${oos?'out-of-stock':''}" onclick="openPD('${p.id}')">
       ${oosBadge}
       <button class="pwish-btn ${inWish?'on':''}" onclick="quickWish('${p.id}',this,event)">${inWish?'❤️':'🤍'}</button>
       <div class="pimg-wrap">
@@ -1067,7 +988,7 @@ function renderGrid(){
           <span class="star-count">${p.rating} (${p.reviews})</span>
         </div>
         <div class="pprice-row">
-          <span class="pprice" style="${oos?'color:var(--gray)':''}">${fmt(p.price)}</span>
+          <span class="pprice" style="${oos?'color:var(--gray)':''}">${fmt(priceOf(p))}</span>
           ${p.old?`<span class="pprice-old">${fmt(p.old)}</span><span class="pdiscount">-${discPct}%</span>`:''}
         </div>
         ${p.freeShip&&!oos?`<div class="pfree-ship">🚚 Envío gratis</div>`:''}
@@ -1081,95 +1002,75 @@ function renderGrid(){
   }).join('');
 }
 
-/* Cambia el sabor elegido de un producto (tarjeta) y refresca la foto */
-function pickFlavorCard(id, flavorName){
-  selectedFlavor[id] = flavorName;
-  renderGrid();
-}
+function pickFlavorCard(id, name){ selectedFlavor[id]=name; renderGrid(); }
+function pickSizeCard(id, name){ selectedSize[id]=name; renderGrid(); }
 
 const cardQtyMap={};
-function cardQtyChange(id,d){
-  cardQtyMap[id]=Math.max(1,(cardQtyMap[id]||1)+d);
-  const el=document.getElementById(`cardQty_${id}`);
-  if(el) el.textContent=cardQtyMap[id];
+function cardQtyChange(key,d){
+  cardQtyMap[key]=Math.max(1,(cardQtyMap[key]||1)+d);
+  const el=document.getElementById(`cardQty_${key}`);
+  if(el) el.textContent=cardQtyMap[key];
 }
 function addToCartFromCard(id){
   const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
   if(isOutOfStock(p)){toast('⚠️ Producto agotado'); return;}
-  const ckey=cartKeyOf(p);
   const flavor=flavorOf(p);
+  if(isFlavorOut(p,flavor)){toast('⚠️ Ese sabor está agotado'); return;}
+  const ckey=cartKeyOf(p);
   if(cart[ckey]){toggleCart(); return;}
   const qty=cardQtyMap[ckey]||1;
-  cart[ckey]={product:p,qty,flavor};
+  cart[ckey]={product:p,qty,flavor,size:sizeOf(p),price:priceOf(p)};
   updateCart(); renderGrid(); updateWishPanel();
-  toast(`✅ ${p.name}${flavor?' ('+flavor+')':''} ×${qty} agregado`);
+  toast(`✅ ${itemLabel(cart[ckey])} ×${qty} agregado`);
 }
 
-/* ══════════════════════════════════════════════════════════
-   MODAL PRODUCTO — muestra aviso de agotado si aplica
-══════════════════════════════════════════════════════════ */
+/* ══ MODAL PRODUCTO ══ */
+function renderPDDynamic(){
+  const p=pdProd; if(!p) return;
+  const oos=isOutOfStock(p);
+  const discPct=p.old?Math.round((1-p.price/p.old)*100):0;
+  const dispImg=imgOf(p);
+
+  document.getElementById('pdImgSide').innerHTML=
+    (isUrl(dispImg)?`<img src="${dispImg}" alt="${p.name}">`:`<div class="pd-img-emoji">${dispImg||'📦'}</div>`)
+    + (oos?`<div class="pd-out-stamp">⛔ AGOTADO</div>`:'');
+
+  let ph=`<span class="pd-price" style="${oos?'color:var(--gray)':''}">${fmt(priceOf(p))}</span>`;
+  if(p.old) ph+=`<span class="pd-old">${fmt(p.old)}</span><span class="pd-disc">-${discPct}%</span>`;
+  document.getElementById('pdPriceRow').innerHTML=ph;
+
+  document.getElementById('pdFlavorSection').innerHTML = oos ? '' : optionChips(p,'pd');
+
+  document.getElementById('pdShipOrOut').innerHTML = oos
+    ? `<div class="pd-out-notice">⛔ Este producto está temporalmente agotado.<br>Vuelve pronto, ¡lo reponemos rápido!</div>`
+    : `<div class="pd-ship">${p.freeShip?'✅ Envío GRATIS — Entrega en 24-48 horas':'📦 Envío estándar disponible — Coordinar al pagar'}</div>`;
+
+  document.getElementById('pdQtySection').style.display=oos?'none':'';
+
+  const wishBtn=`<button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
+  let main;
+  if(oos) main=`<button class="pd-add-btn-out" disabled>⛔ Producto Agotado</button>`;
+  else if(isFlavorOut(p,flavorOf(p))) main=`<button class="pd-add-btn-out" disabled>⛔ ${flavorLabelOf(p)} Agotado</button>`;
+  else {
+    const inCart=cart[cartKeyOf(p)];
+    main = inCart
+      ? `<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${inCart.qty})</button>`
+      : `<button class="pd-add-btn" onclick="addFromPD()">+ Agregar al Carrito</button>`;
+  }
+  document.getElementById('pdActions').innerHTML=main+wishBtn;
+}
+
 function openPD(id){
   pdProd=PRODUCTS.find(x=>x.id===id); if(!pdProd) return;
   pdQty_n=1;
   const p=pdProd;
-  const oos=isOutOfStock(p);
-  const discPct=p.old?Math.round((1-p.price/p.old)*100):0;
-
-  // Imagen + sello (usa la foto del sabor seleccionado, si aplica)
-  const imgSide=document.getElementById('pdImgSide');
-  const dispImg=imgOf(p);
-  imgSide.innerHTML=(isUrl(dispImg)?`<img src="${dispImg}" alt="${p.name}">`:`<div class="pd-img-emoji">${dispImg||'📦'}</div>`)
-    + (oos?`<div class="pd-out-stamp">⛔ AGOTADO</div>`:'');
-
   document.getElementById('pdCat').textContent=catNames[p.cat];
   document.getElementById('pdName').textContent=p.name;
   document.getElementById('pdStars').innerHTML=`<span style="color:#f59e0b">${starsHtml(p.rating)}</span>`;
   document.getElementById('pdReviews').textContent=`${p.rating}/5 · ${p.reviews} reseñas`;
-
-  let ph=`<span class="pd-price" style="${oos?'color:var(--gray)':''}">${fmt(p.price)}</span>`;
-  if(p.old) ph+=`<span class="pd-old">${fmt(p.old)}</span><span class="pd-disc">-${discPct}%</span>`;
-  document.getElementById('pdPriceRow').innerHTML=ph;
   document.getElementById('pdDesc').textContent=p.desc;
-
-  // Selector de sabores en el modal
-  const flavorSec=document.getElementById('pdFlavorSection');
-  if(hasFlavors(p) && !oos){
-    const curFlavor=flavorOf(p);
-    flavorSec.innerHTML=`<div class="pd-flavor-row" id="pdFlavorRow">
-        <span class="pd-flavor-label">Sabor:</span>
-        ${p.flavors.map(fl=>`<button class="flavor-chip ${curFlavor===fl.name?'active':''}"
-          data-flavor="${fl.name}" onclick="pickFlavorPD('${p.id}','${fl.name.replace(/'/g,"\\'")}')">${fl.name}</button>`).join('')}
-      </div>`;
-  } else {
-    flavorSec.innerHTML='';
-  }
-
-  // Zona de envío o aviso agotado
-  const soEl=document.getElementById('pdShipOrOut');
-  if(oos){
-    soEl.innerHTML=`<div class="pd-out-notice">⛔ Este producto está temporalmente agotado.<br>Vuelve pronto, ¡lo reponemos rápido!</div>`;
-  } else {
-    soEl.innerHTML=`<div class="pd-ship">${p.freeShip?'✅ Envío GRATIS — Entrega en 24-48 horas':'📦 Envío estándar disponible — Coordinar al pagar'}</div>`;
-  }
-
-  // Qty y botones según stock
-  document.getElementById('pdQtySection').style.display=oos?'none':'';
   document.getElementById('pdQnum').textContent=1;
-
-  const actEl=document.getElementById('pdActions');
-  if(oos){
-    actEl.innerHTML=`<button class="pd-add-btn-out" disabled>⛔ Producto Agotado</button>
-      <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
-  } else {
-    const inCart=cart[cartKeyOf(p)];
-    if(inCart){
-      actEl.innerHTML=`<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${inCart.qty})</button>
-        <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
-    } else {
-      actEl.innerHTML=`<button class="pd-add-btn" onclick="addFromPD()">+ Agregar al Carrito</button>
-        <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
-    }
-  }
+  renderPDDynamic();
 
   pdStarSelected=0;
   document.querySelectorAll('#starPicker .star-pick-btn').forEach(b=>b.classList.remove('active'));
@@ -1183,46 +1084,19 @@ function closePD(){document.getElementById('pdOverlay').classList.remove('open')
 document.getElementById('pdOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('pdOverlay'))closePD();});
 
 function pdQty(d){pdQty_n=Math.max(1,pdQty_n+d);document.getElementById('pdQnum').textContent=pdQty_n;}
-
-/* Cambia el sabor elegido dentro del modal: actualiza la foto y los chips
-   sin cerrar el modal ni perder la cantidad que el cliente ya eligió. */
-function pickFlavorPD(id, flavorName){
-  selectedFlavor[id]=flavorName;
-  const p=pdProd; if(!p) return;
-  const oos=isOutOfStock(p);
-  const dispImg=imgOf(p);
-  document.getElementById('pdImgSide').innerHTML=
-    (isUrl(dispImg)?`<img src="${dispImg}" alt="${p.name}">`:`<div class="pd-img-emoji">${dispImg||'📦'}</div>`)
-    + (oos?`<div class="pd-out-stamp">⛔ AGOTADO</div>`:'');
-  document.querySelectorAll('#pdFlavorRow .flavor-chip').forEach(b=>{
-    b.classList.toggle('active', b.dataset.flavor===flavorName);
-  });
-  // Si el producto ya estaba en el carrito con otro sabor, el botón de acción
-  // debe reflejar el sabor recién elegido (puede ser uno nuevo en el carrito)
-  const actEl=document.getElementById('pdActions');
-  const inCart=cart[cartKeyOf(p)];
-  if(!oos){
-    if(inCart){
-      actEl.innerHTML=`<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${inCart.qty})</button>
-        <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
-    } else {
-      actEl.innerHTML=`<button class="pd-add-btn" onclick="addFromPD()">+ Agregar al Carrito</button>
-        <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
-    }
-  }
-}
+function pickFlavorPD(id, name){ selectedFlavor[id]=name; renderPDDynamic(); renderGrid(); }
+function pickSizePD(id, name){ selectedSize[id]=name; renderPDDynamic(); renderGrid(); }
 
 function addFromPD(){
   const p=pdProd; if(!p||isOutOfStock(p)) return;
-  const ckey=cartKeyOf(p);
   const flavor=flavorOf(p);
+  if(isFlavorOut(p,flavor)){toast('⚠️ Ese sabor está agotado'); return;}
+  const ckey=cartKeyOf(p);
   if(cart[ckey]) cart[ckey].qty+=pdQty_n;
-  else cart[ckey]={product:p,qty:pdQty_n,flavor};
+  else cart[ckey]={product:p,qty:pdQty_n,flavor,size:sizeOf(p),price:priceOf(p)};
   updateCart(); renderGrid(); updateWishPanel();
-  const actEl=document.getElementById('pdActions');
-  actEl.innerHTML=`<button class="pd-add-btn ver-carrito" onclick="closePD();toggleCart()">🛒 Ver Carrito (${cart[ckey].qty})</button>
-    <button class="pd-wish-toggle ${wish.has(p.id)?'on':''}" id="pdWishBtn" onclick="toggleWishPD()">${wish.has(p.id)?'❤️':'🤍'}</button>`;
-  toast(`✅ ${p.name}${flavor?' ('+flavor+')':''} ×${pdQty_n} agregado`);
+  renderPDDynamic();
+  toast(`✅ ${itemLabel(cart[ckey])} ×${pdQty_n} agregado`);
 }
 function toggleWishPD(){
   const p=pdProd; if(!p) return;
@@ -1233,30 +1107,35 @@ function toggleWishPD(){
 }
 function openLbPD(){
   if(!pdProd) return;
+  const img=imgOf(pdProd);
   document.getElementById('lbName').textContent=pdProd.name;
-  document.getElementById('lbBody').innerHTML=isUrl(pdProd.img)
-    ?`<img src="${pdProd.img}" alt="${pdProd.name}">`
-    :`<div class="lb-emoji">${pdProd.img||'📦'}</div>`;
+  document.getElementById('lbBody').innerHTML=isUrl(img)
+    ?`<img src="${img}" alt="${pdProd.name}">`
+    :`<div class="lb-emoji">${img||'📦'}</div>`;
   document.getElementById('lb').classList.add('open');
 }
 function closeLb(){document.getElementById('lb').classList.remove('open');}
 document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb')||e.target===document.getElementById('lbBody'))closeLb();});
 
-/* CARRITO */
+/* ══ CARRITO ══ */
 function updateQty(key,d){
   if(!cart[key])return;
   cart[key].qty+=d;
   if(cart[key].qty<=0)delete cart[key];
   updateCart();renderGrid();updateWishPanel();
+  if(pdProd && document.getElementById('pdOverlay').classList.contains('open')) renderPDDynamic();
 }
-function delCartItem(key){delete cart[key];updateCart();renderGrid();updateWishPanel();}
+function delCartItem(key){
+  delete cart[key];updateCart();renderGrid();updateWishPanel();
+  if(pdProd && document.getElementById('pdOverlay').classList.contains('open')) renderPDDynamic();
+}
 function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
   document.getElementById('cartOverlay').classList.toggle('open');
 }
 function updateCart(){
   const items=Object.entries(cart).map(([key,val])=>({key,...val}));
-  const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
+  const total=cartTotal();
   const count=items.reduce((s,i)=>s+i.qty,0);
   document.getElementById('cartCount').textContent=count;
   if(!items.length){
@@ -1264,41 +1143,42 @@ function updateCart(){
     document.getElementById('cartSummary').innerHTML=`<div class="csummary-total"><span>Total</span><span>${fmt(0)}</span></div>`;
     return;
   }
-  document.getElementById('cartItemsList').innerHTML=items.map(({key,product:p,qty,flavor})=>{
+  document.getElementById('cartItemsList').innerHTML=items.map(i=>{
+    const {key,product:p,qty,flavor,size,price}=i;
     const citemImg = flavor ? ((p.flavors.find(f=>f.name===flavor)||{}).img || p.img) : p.img;
     return `
     <div class="citem">
       <div class="citem-img">${isUrl(citemImg)?`<img src="${citemImg}" alt="${p.name}">`:citemImg||'📦'}</div>
       <div class="citem-info">
-        <div class="citem-name">${p.name}${flavor?` <span style="color:var(--blue);font-weight:700">· ${flavor}</span>`:''}</div>
+        <div class="citem-name">${p.name}${flavor?` <span style="color:var(--blue);font-weight:700">· ${flavor}</span>`:''}${size?` <span style="color:var(--orange2);font-weight:700">· ${size}</span>`:''}</div>
         <div class="citem-cat">${catNames[p.cat]}</div>
-        <div class="citem-price">${fmt(p.price*qty)}</div>
+        <div class="citem-price">${fmt(price*qty)}</div>
         <div class="citem-controls">
-          <button class="cqty-b" onclick="updateQty('${key}',-1)">−</button>
+          <button class="cqty-b" onclick="updateQty('${escQ(key)}',-1)">−</button>
           <span class="cqty-n">${qty}</span>
-          <button class="cqty-b" onclick="updateQty('${key}',1)">+</button>
-          <button class="cdel-b" onclick="delCartItem('${key}')">🗑</button>
+          <button class="cqty-b" onclick="updateQty('${escQ(key)}',1)">+</button>
+          <button class="cdel-b" onclick="delCartItem('${escQ(key)}')">🗑</button>
         </div>
       </div>
     </div>`;
   }).join('');
   document.getElementById('cartSummary').innerHTML=`
     <div class="csummary-row"><span>Subtotal</span><span>${fmt(total)}</span></div>
-    <div class="csummary-row"><span>Envío</span><span style="font-style:italic;color:var(--text2)">Coordinar más adelante</span></div>
+    <div class="csummary-row"><span>Envío</span><span style="font-style:italic;color:var(--text2)">Se calcula según tu zona</span></div>
     <div class="csummary-total"><span>Total</span><span>${fmt(total)}</span></div>`;
 }
 function shareCart(){
   const items=Object.values(cart);
   if(!items.length){toast('⚠️ El carrito está vacío');return;}
-  const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
+  const total=cartTotal();
   const msg=`🛒 *MI CARRITO — MERCADUK💚*\n━━━━━━━━━━━━━━━━\n`+
-    items.map(({product:p,qty,flavor})=>`• ${p.name}${flavor?' ('+flavor+')':''}\n  ×${qty} — ${fmt(p.price*qty)}`).join('\n')+
+    items.map(i=>`• ${itemLabel(i)}\n  ×${i.qty} — ${fmt(i.price*i.qty)}`).join('\n')+
     `\n━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total)}*\n\n¡Mira lo que encontré! 😍`;
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
   toast('📤 Compartiendo en WhatsApp...');
 }
 
-/* FAVORITOS */
+/* ══ FAVORITOS ══ */
 function quickWish(id,btn,e){
   e.stopPropagation();
   if(wish.has(id)){wish.delete(id);btn.textContent='🤍';btn.classList.remove('on');}
@@ -1315,14 +1195,15 @@ function updateWishPanel(){
   const items=[...wish].map(id=>PRODUCTS.find(x=>x.id===id)).filter(Boolean);
   box.innerHTML=items.map(p=>{
     const oos=isOutOfStock(p);
-    const inCart=cart[p.id];
+    const inCart=Object.values(cart).some(i=>i.product.id===p.id);
+    const fromPrice = hasSizes(p) ? Math.min(...p.sizes.map(s=>s.price)) : p.price;
     return `<div class="witem">
       <div class="witem-img">${isUrl(p.img)?`<img src="${p.img}" alt="${p.name}">`:p.img||'📦'}</div>
       <div class="witem-info">
         <div class="witem-name">${p.name}</div>
-        ${oos?`<div class="witem-out-tag">⛔ AGOTADO</div>`:`<div class="witem-price">${fmt(p.price)}</div>`}
+        ${oos?`<div class="witem-out-tag">⛔ AGOTADO</div>`:`<div class="witem-price">${hasSizes(p)?'Desde ':''}${fmt(fromPrice)}</div>`}
         <div class="witem-btns">
-          <button class="witem-add ${oos?'disabled':''}" onclick="${oos?'toast(\'⚠️ Producto agotado\')':'closeWishPanel();openPD(\''+p.id+'\')'}">
+          <button class="witem-add ${oos?'disabled':''}" onclick="${oos?`toast('⚠️ Producto agotado')`:`closeWishPanel();openPD('${p.id}')`}">
             ${oos?'Sin stock':inCart?'✓ En carrito':'+ Agregar'}
           </button>
           <button class="witem-del" onclick="removeWish('${p.id}')">🗑</button>
@@ -1333,18 +1214,51 @@ function updateWishPanel(){
 }
 function removeWish(id){wish.delete(id);updateWishPanel();renderGrid();toast('💔 Quitado de favoritos');}
 
-/* PEDIDO */
+/* ══ PEDIDO ══ */
+function currentShipping(){
+  const z=document.getElementById('fZone').value;
+  if(z==='') return null;                 // aún no eligió zona
+  const n=parseFloat(z);
+  return isNaN(n)?null:n;
+}
+function refreshOrderTotals(){
+  const subtotal=cartTotal();
+  const ship=currentShipping();
+  document.getElementById('orderShip').textContent = ship===null ? 'Selecciona tu zona' : (ship===0?'GRATIS':fmt(ship));
+  document.getElementById('orderTotal').textContent = fmt(subtotal + (ship||0));
+}
+function updateZona(){
+  const info = document.getElementById('fZoneInfo');
+  const sel  = document.getElementById('fZone');
+  const ship = currentShipping();
+  sel.classList.remove('err');
+  document.getElementById('fZoneErr').classList.remove('show');
+  if(ship===null){
+    info.style.display='none';
+  } else if(ship===0){
+    info.style.display='block';
+    info.style.background='var(--green-bg)';
+    info.style.color='var(--green)';
+    info.textContent='✅ ¡Envío gratis dentro de Cueto!';
+  } else {
+    info.style.display='block';
+    info.style.background='var(--blue-light)';
+    info.style.color='var(--blue)';
+    info.textContent='🚗 Costo de envío: '+fmt(ship);
+  }
+  refreshOrderTotals();
+}
 function openOrder(){
   if(!Object.keys(cart).length){toast('⚠️ El carrito está vacío');return;}
   const items=Object.values(cart);
-  const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
-  const shipping=total>=50?0:0
-  document.getElementById('orderItems').innerHTML=items.map(({product:p,qty,flavor})=>
-    `<div class="order-item-row"><span class="order-item-name">${p.name}${flavor?' ('+flavor+')':''} ×${qty}</span><span>${fmt(p.price*qty)}</span></div>`).join('')+
-    `<div class="order-item-row" style="color:var(--text2)"><span>Envío</span><span>${shipping===0?'GRATIS':fmt(shipping)}</span></div>`;
-  document.getElementById('orderTotal').textContent=fmt(total+shipping);
+  document.getElementById('orderItems').innerHTML=items.map(i=>
+    `<div class="order-item-row"><span class="order-item-name">${itemLabel(i)} ×${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('');
   ['fName','fPhone','fAddr','fNote'].forEach(id=>{document.getElementById(id).value='';document.getElementById(id).classList.remove('err');});
+  document.getElementById('fZone').value='';
+  document.getElementById('fZone').classList.remove('err');
+  document.getElementById('fZoneErr').classList.remove('show');
   ['fNameErr','fPhoneErr','fAddrErr'].forEach(id=>document.getElementById(id).classList.remove('show'));
+  updateZona();
   document.getElementById('orderOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -1357,28 +1271,28 @@ function sendOrder(){
   const time=document.getElementById('fTime').value;
   const note=document.getElementById('fNote').value.trim();
   let ok=true;
-    const zone=document.getElementById('fZone').value;
-  if(!zone){
-    document.getElementById('fZone').classList.add('err');
-    document.getElementById('fZoneErr').classList.add('show');
-    toast('⚠️ Selecciona tu zona de entrega'); return;
-  }
-  document.getElementById('fZone').classList.remove('err');
-  document.getElementById('fZoneErr').classList.remove('show');
-  const shipping = zone==='gratis' ? 0 : 3.00;
-  const zonaTexto = document.getElementById('fZone').options[document.getElementById('fZone').selectedIndex].text;
   const chk=(v,f,e)=>{if(!v){document.getElementById(f).classList.add('err');document.getElementById(e).classList.add('show');ok=false;}else{document.getElementById(f).classList.remove('err');document.getElementById(e).classList.remove('show');}};
   chk(name,'fName','fNameErr');chk(phone,'fPhone','fPhoneErr');chk(addr,'fAddr','fAddrErr');
+
+  const shipping=currentShipping();
+  if(shipping===null){
+    document.getElementById('fZone').classList.add('err');
+    document.getElementById('fZoneErr').classList.add('show');
+    ok=false;
+  }
   if(!ok){toast('⚠️ Completa los campos obligatorios');return;}
+
+  const sel=document.getElementById('fZone');
+  const zonaTexto=sel.options[sel.selectedIndex].text;
   const items=Object.values(cart);
-  const total=items.reduce((s,i)=>s+i.product.price*i.qty,0);
+  const total=cartTotal();
   const msg=`🛒 *NUEVO PEDIDO — MERCADUK💚*\n━━━━━━━━━━━━━━━━\n`+
     `👤 *Nombre:* ${name}\n📞 *Tel:* ${phone}\n🏠 *Dir:* ${addr}\n`+
     (time?`🕐 *Horario:* ${time}\n`:'')+(note?`📝 *Nota:* ${note}\n`:'')+
     `━━━━━━━━━━━━━━━━\n`+
-    items.map(({product:p,qty,flavor})=>`• ${p.name}${flavor?' ('+flavor+')':''} ×${qty} — ${fmt(p.price*qty)}`).join('\n')+
-    `\n📍*Zona*${zonaTexto}\n📦 Envío: ${shipping===0?'GRATIS':fmt(shipping)}`+
-    `\n━━━━━━━━━━━━━━━━\n💰 *TOTAL: ${fmt(total+shipping)}*\n`+
+    items.map(i=>`• ${itemLabel(i)} ×${i.qty} — ${fmt(i.price*i.qty)}`).join('\n')+
+    `\n━━━━━━━━━━━━━━━━\n📍 *Zona:* ${zonaTexto}\n📦 *Envío:* ${shipping===0?'GRATIS':fmt(shipping)}`+
+    `\n💰 *TOTAL: ${fmt(total+shipping)}*\n`+
     `📅 ${new Date().toLocaleString('es-CU')}\n\n¡Hola! Quiero confirmar este pedido 😊`;
   window.open(`https://wa.me/5355562204?text=${encodeURIComponent(msg)}`,'_blank');
   toast('✅ Redirigiendo a WhatsApp...');
@@ -1386,7 +1300,7 @@ function sendOrder(){
   cart={};updateCart();renderGrid();updateWishPanel();
 }
 
-/* TOAST */
+/* ══ TOAST ══ */
 let toastTimer;
 function toast(msg){
   const el=document.getElementById('toast');
@@ -1395,27 +1309,29 @@ function toast(msg){
   toastTimer=setTimeout(()=>el.classList.remove('show'),2800);
 }
 
-/* RESEÑAS */
+/* ══ RESEÑAS ══ */
+const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const productReviews={};
 const serviceReviews=[];
 let pdStarSelected=0,srevStarSelected=0;
 function pickStar(n){pdStarSelected=n;document.querySelectorAll('#starPicker .star-pick-btn').forEach((b,i)=>b.classList.toggle('active',i<n));}
 function pickSrevStar(n){srevStarSelected=n;document.querySelectorAll('#srevStarPicker .star-pick-btn').forEach((b,i)=>b.classList.toggle('active',i<n));}
-function renderProductReviews(id){
-  const list=productReviews[id]||[];
-  const box=document.getElementById('pdReviewList');
-  const cnt=document.getElementById('pdReviewCount');
-  cnt.textContent=list.length?`(${list.length})`:'';
-  if(!list.length){box.innerHTML='<div class="review-empty">Sé el primero en opinar 😊</div>';return;}
-  box.innerHTML=list.slice().reverse().map(r=>`
-    <div class="review-item">
+function reviewHtml(r){
+  return `<div class="review-item">
       <div class="review-header">
-        <span class="review-author">👤 ${r.author}</span>
+        <span class="review-author">👤 ${esc(r.author)}</span>
         <span class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span>
         <span class="review-date">${r.date}</span>
       </div>
-      <div class="review-text">${r.text}</div>
-    </div>`).join('');
+      <div class="review-text">${esc(r.text)}</div>
+    </div>`;
+}
+function renderProductReviews(id){
+  const list=productReviews[id]||[];
+  const box=document.getElementById('pdReviewList');
+  document.getElementById('pdReviewCount').textContent=list.length?`(${list.length})`:'';
+  if(!list.length){box.innerHTML='<div class="review-empty">Sé el primero en opinar 😊</div>';return;}
+  box.innerHTML=list.slice().reverse().map(reviewHtml).join('');
 }
 function submitProductReview(){
   if(!pdStarSelected){toast('⭐ Elige una puntuación');return;}
@@ -1436,15 +1352,7 @@ function closeSrevCheck(e){if(e.target===document.getElementById('srevOverlay'))
 function renderServiceReviews(){
   const box=document.getElementById('srevList');
   if(!serviceReviews.length){box.innerHTML='<div class="review-empty">¡Sé el primero en valorar! 🌟</div>';return;}
-  box.innerHTML=serviceReviews.slice().reverse().map(r=>`
-    <div class="review-item">
-      <div class="review-header">
-        <span class="review-author">👤 ${r.author}</span>
-        <span class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span>
-        <span class="review-date">${r.date}</span>
-      </div>
-      <div class="review-text">${r.text}</div>
-    </div>`).join('');
+  box.innerHTML=serviceReviews.slice().reverse().map(reviewHtml).join('');
 }
 function submitServiceReview(){
   if(!srevStarSelected){toast('⭐ Elige una puntuación');return;}
@@ -1465,23 +1373,7 @@ document.addEventListener('keydown',e=>{
     else if(document.getElementById('orderOverlay').classList.contains('open'))closeOrder();
   }
 });
-function updateZona(){
-  const zone = document.getElementById('fZone').value;
-  const info = document.getElementById('fZoneInfo');
-  if(zone === 'gratis'){
-    info.style.display = 'block';
-    info.style.background = 'var(--green-bg)';
-    info.style.color = 'var(--green)';
-    info.textContent = '✅ ¡Envío gratis dentro de Cueto!';
-  } else if(zone === 'cobro'){
-    info.style.display = 'block';
-    info.style.background = 'var(--blue-light)';
-    info.style.color = 'var(--blue)';
-    info.textContent = '🚗 Costo de envío: $3.00 USD';
-  } else {
-    info.style.display = 'none';
-  }
-}
+
 /* INIT */
 initTheme();buildHeroDots();resetHeroTimer();updateCart();updateWishPanel();renderGrid();
 </script>
